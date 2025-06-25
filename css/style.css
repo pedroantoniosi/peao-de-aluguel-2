@@ -58,6 +58,23 @@ body {
 }
 
 
+.btn-rounded {
+    max-width: 12rem;
+    width: 100%;
+    padding: .8rem 1rem;
+    margin-top: auto;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    border-radius: 20rem;
+    transition: all .1s;
+
+    &:hover {
+        background-color: var(--dark);
+        color: var(--light);
+    }
+}
+
 .container {
     margin: 0 auto;
     padding: 1rem;
@@ -95,6 +112,7 @@ body {
     line-height: 1.6;
     margin-bottom: 1rem;
 }
+
 
 
 header {
@@ -228,7 +246,7 @@ header.active {
         right: 0;
         bottom: 0;
         inset: 0;
-        background-image: url('/assets/img/background-3.png');
+        background-image: url('/assets/img/background-mobile.png');
         background-repeat: no-repeat;
         background-size: 100%;
         z-index: -1;
@@ -264,6 +282,17 @@ header.active {
             height: auto;
             max-width: 480px;
             margin: 0 auto;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .hero-container {
+        position: relative;
+        z-index: 1;
+
+        &::after {
+            background-image: url('/assets/img/background.png');
         }
     }
 }
@@ -521,22 +550,10 @@ header.active {
                     font-size: 1.2rem;
                 }
 
-                & .btn-buy {
-                    max-width: 18rem;
-                    width: 100%;
-                    padding: 1rem;
+                & .btn-rounded {
                     margin-top: auto;
-                    color: var(--primary-color);
-                    font-size: 1.1rem;
-                    font-weight: 500;
-                    border-radius: .4rem;
-                    transition: all .1s;
-
-                    &:hover {
-                        background-color: var(--dark);
-                        color: var(--light);
-                    }
                 }
+
             }
         }
 
