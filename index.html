@@ -132,6 +132,8 @@
     </section>
 
 
+
+
     <section class="howitworks-container mb-4 p-1">
         <div class="howitworks-inner">
             <div class="container">
@@ -169,42 +171,54 @@
                 <p class="text text-center">Ofertas por tempo limitado</p>
             </div>
 
-            <swiper-container class="mySwiper slider-container" pagination="true" slides-per-view="1"
-                space-between="10">
-                <swiper-slide class="slider-item p-1">
-                    <div class="card col gap-2 p-2">
-                        <div class="row justify-between align-center flex-wrap gap-05 ">
-                            <div class="card-title">Plano Básico</div>
-                            <div class="card-misc">Mais Acessível</div>
+            <swiper-container id="plans-slider" class="mySwiper plans-slider" pagination="true"
+                pagination-clickable="true" space-between="30" slides-per-view="2">
+                <swiper-slide>
+                    <div class="card-wrapper row ">
+                        <div class="card">
+                            <div class="row justify-between align-center flex-wrap gap-05 ">
+                                <div class="card-title">Plano Básico</div>
+                                <div class="card-misc">Mais Acessível</div>
+                            </div>
+                            <div class="caption">
+                                <div class="card-price">Gratuito<span>/mês</span></div>
+                            </div>
+                            <ul class="list-group col gap-05 mt-4">
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Perfil Público
+                                </li>
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>1 anuncio por
+                                    perfil
+                                </li>
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Mensagens Básicas
+                                </li>
+                            </ul>
+                            <button class="btn-buy m-auto">Comece Agora</button>
                         </div>
-                        <div class="caption">
-                            <div class="card-price">Gratuito<span>/mês</span></div>
-                        </div>
-                        <ul class="list-group col gap-05">
-                            <li class="list-item"><i class="bi bi-check-circle-fill"></i>Perfil Público</li>
-                            <li class="list-item"><i class="bi bi-check-circle-fill"></i>1 anuncio por perfil</li>
-                            <li class="list-item"><i class="bi bi-check-circle-fill"></i>Mensagens Básicas</li>
-                        </ul>
-                        <button class="btn-buy m-auto">Comece Agora</button>
                     </div>
                 </swiper-slide>
-                <swiper-slide class="slider-item p-1">
-                    <div class="active card col gap-2 p-2">
-                        <div class="row justify-between align-center flex-wrap gap-05">
-                            <div class="card-title">Plano Premium</div>
-                            <div class="card-misc">Mais Popular</div>
+                <swiper-slide>
+                    <div class="card-wrapper col">
+                        <div class="card">
+                            <div class="row justify-between align-center flex-wrap gap-05">
+                                <div class="card-title">Plano Premium</div>
+                                <div class="card-misc">Mais Popular</div>
+                            </div>
+                            <div class="caption">
+                                <div class="card-price">R$ 25 <span>/mês</span></div>
+                            </div>
+                            <ul class="list-group col gap-05 mt-4">
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Até 5 anuncios
+                                </li>
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Selo de Destaque
+                                </li>
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Estatisticas de
+                                    Visualizações
+                                </li>
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Mensagens Diretas
+                                </li>
+                            </ul>
+                            <button class="btn-buy m-auto">Comece Agora</button>
                         </div>
-                        <div class="caption">
-                            <div class="card-price">R$ 25 <span>/mês</span></div>
-                        </div>
-                        <ul class="list-group col gap-05">
-                            <li class="list-item"><i class="bi bi-check-circle-fill"></i>Até 5 anuncios</li>
-                            <li class="list-item"><i class="bi bi-check-circle-fill"></i>Selo de Destaque</li>
-                            <li class="list-item"><i class="bi bi-check-circle-fill"></i>Estatisticas de Visualizações
-                            </li>
-                            <li class="list-item"><i class="bi bi-check-circle-fill"></i>Mensagens Diretas</li>
-                        </ul>
-                        <button class="btn-buy m-auto">Comece Agora</button>
                     </div>
                 </swiper-slide>
 
@@ -235,13 +249,14 @@
         <div class="container row justify-between gap-4 flex-wrap">
             <div class="col gap-1">
                 <h3 class="footer-title">Sobre a Plataforma</h3>
-                <p class="footer-text">Conectamos profissionais e contratantes com facilidade e segurança. Seu talento
+                <p class="footer-text" style="max-width: 660px;">Conectamos profissionais e contratantes com facilidade
+                    e segurança. Seu talento
                     merece visibilidade, e sua necessidade merece solução.</p>
 
                 <p class="mt-4 footer-title">Fique por entro de mais novidades!</p>
                 <form class="row footer-form">
                     <input type="email" class="flex-1" placeholder="Digite seu email mais novidades">
-                    <button class="btn-submi" type="submit"><i class="bi bi-send-fill"></i></button>
+                    <button class="btn-submit" type="submit"><i class="bi bi-send-fill"></i></button>
                 </form>
             </div>
 

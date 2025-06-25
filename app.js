@@ -69,43 +69,20 @@ renderSteps('profissional');
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-    const toggleButtons = document.querySelectorAll(".plan-toggle");
-    const planGroups = document.querySelectorAll(".plans-group");
-
-    toggleButtons.forEach(button => {
-        button.addEventListener("click", () => {
-            const type = button.dataset.type;
-
-            planGroups.forEach(group => {
-                if (group.dataset.group === type) {
-                    group.style.display = "block";
-                } else {
-                    group.style.display = "none";
-                }
-            });
-
-            // Atualiza aparência dos botões
-            toggleButtons.forEach(btn => btn.classList.remove("btn-square"));
-            button.classList.add("btn-square");
-        });
-    });
-});
 
 
-
-function updateSlidesPerView() {
-    const swiperContainer = document.querySelector('.mySwiper.slider-container');
-    if (!swiperContainer) return;
-    if (window.innerWidth > 768) {
-        swiperContainer.setAttribute('slides-per-view', '2');
-    } else {
-        swiperContainer.setAttribute('slides-per-view', '1');
+const plansSlider = document.getElementById('plans-slider');
+if (plansSlider) {
+    function updateSlidesPerView() {
+        if (window.innerWidth < 768) {
+            plansSlider.setAttribute('slides-per-view', '1');
+        } else {
+            plansSlider.setAttribute('slides-per-view', '2');
+        }
     }
+    window.addEventListener('resize', updateSlidesPerView);
+    updateSlidesPerView();
 }
-
-window.addEventListener('resize', updateSlidesPerView);
-document.addEventListener('DOMContentLoaded', updateSlidesPerView);
 
 
 document.addEventListener('click', function (e) {
