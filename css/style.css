@@ -1083,14 +1083,15 @@
 
 
 .background-banner {
-    padding: 2rem;
+    display: grid;
+    padding: 1rem;
     color: var(--light);
     z-index: 1;
     position: relative;
     background-image: url('/assets/img/auth-background.png');
     background-repeat: no-repeat;
-    background-position: right;
-    height: 100dvh;
+    background-position: center;
+    min-height: 100dvh;
 
     &::before {
         content: "";
@@ -1101,8 +1102,7 @@
         bottom: 0;
         inset: 0;
         z-index: -1;
-        background: linear-gradient(120deg, var(--primary-color) 0%, var(--accent-color) 100%);
-        opacity: 0.7;
+        background: linear-gradient(180deg, rgba(0, 102, 255, 0.767) 0%, rgba(1, 6, 82, 0.877) 100%);
     }
 
     & .container {
@@ -1278,7 +1278,7 @@
             --focus-color: #007bff;
             max-width: 550px;
             width: 100%;
-            padding: 2rem;
+            padding: 1rem;
             background-color: #1E1E1E;
             border-radius: 1rem;
             height: fit-content;
