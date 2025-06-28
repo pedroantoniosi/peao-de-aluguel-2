@@ -67,10 +67,6 @@ buttons.forEach(btn => {
 renderSteps('profissional');
 
 
-
-
-
-
 const plansSlider = document.getElementById('plans-slider');
 if (plansSlider) {
     function updateSlidesPerView() {
@@ -108,9 +104,52 @@ if (toggle && navbar) {
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header-container');
     if (!header) return;
-    if (window.scrollY >= 200) {
+    if (window.scrollY >= 10) {
         header.classList.add('active');
     } else {
         header.classList.remove('active');
     }
 });
+
+
+
+
+const btnLogin = document.getElementById("btnLogin");
+const btnRegister = document.getElementById("btnRegister");
+
+const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
+
+const switchToLogin = () => {
+    loginForm.classList.remove("hidden");
+    loginForm.setAttribute("aria-hidden", "false");
+    registerForm.classList.add("hidden");
+    registerForm.setAttribute("aria-hidden", "true");
+
+    toggleInputs(registerForm, true);
+    toggleInputs(loginForm, false);
+
+    btnLogin.classList.add("active");
+    btnRegister.classList.remove("active");
+};
+
+const switchToRegister = () => {
+    loginForm.classList.add("hidden");
+    loginForm.setAttribute("aria-hidden", "true");
+    registerForm.classList.remove("hidden");
+    registerForm.setAttribute("aria-hidden", "false");
+
+    toggleInputs(loginForm, true);
+    toggleInputs(registerForm, false);
+
+    btnRegister.classList.add("active");
+    btnLogin.classList.remove("active");
+};
+
+const toggleInputs = (form, disabled) => {
+    const inputs = form.querySelectorAll("input");
+    inputs.forEach(input => input.disabled = disabled);
+};
+
+btnLogin.addEventListener("click", switchToLogin);
+btnRegister.addEventListener("click", switchToRegister);
