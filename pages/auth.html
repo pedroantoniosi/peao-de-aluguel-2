@@ -14,55 +14,14 @@
 <body class="auth">
     <main class="background-banner">
         <div class="container row align-center">
-            <!-- <div class="wrapper col gap-2 d-none">
-                <div class="caption col gap-1">
-                    <a href="#" class="btn-back mb-2"><i class="bi bi-arrow-left"></i></a>
-                    <h2 class="title">Entre para aproveitar tudo que preparamos para você!</h2>
-                    <p class="text">Faça login e tenha acesso agora mesmo à nossa plataforma.</p>
-                </div>
-                <div class="switch-auth row justify-between">
-                    <button class="btn-rounded flex-1 active" type="button">Login</button>
-                    <button class="btn-rounded flex-1" type="button">Cadastrar</button>
-                </div>
-                <div class="form-container">
-                    <div class="col gap-1">
-                        <div class="form-item row">
-                            <i class="bi bi-envelope-fill me-05"></i>
-                            <div class="position-relative flex-1">
-                                <label class="form-item-misc" for="email">E-mail</label>
-                                <input id="email" type="email" placeholder="exemplo@email.com" required="">
-                            </div>
-                        </div>
-
-                        <div class="form-item row">
-                            <i class="bi bi-lock-fill me-05"></i>
-                            <div class="position-relative flex-1">
-                                <label class="form-item-misc" for="password">Senha</label>
-                                <input id="password" type="password" placeholder="******" minlength="6" required="">
-                            </div>
-                        </div>
-
-                        <div class="row remember-row align-center justify-between">
-                            <label class="row align-center gap-05">
-                                <input type="checkbox" class="remember-checkbox">
-                                <span>Lembrar de mim</span>
-                            </label>
-                            <a href="#" class="forgot-password">Esqueceu a senha?</a>
-                        </div>
-
-                        <button type="submit" class="btn btn-login mt-2">Entrar</button>
-                    </div>
-                </div>
-            </div> -->
             <div class="wrapper col gap-1">
-                <div class="caption col">
-                    <a href="#" class="btn-back mb-2 align-self-end"><i class="bi bi-x-lg"></i></a>
+                <div class="caption col gap-05">
+                    <a href="/index.html" class="btn-back mb-2 align-self-end"><i class="bi bi-x-lg"></i></a>
                     <h2 class="title">Crie sua conta pessoal</h2>
                     <p class="text">Será enviado (solicitado) uma confirmação do cadastro por e-mail.</p>
                 </div>
                 <!-- Etapa 1: Login -->
-                <div class="form-step col tep-register" id="step-register">
-
+                <div class="form-step col step-register" id="step-register">
                     <div class="form-item col">
                         <label for="email">Email:</label>
                         <input type="email" id="email" name="email" required placeholder="Seu Email">
@@ -77,16 +36,19 @@
                         <label for="confirmarSenha">Confirmar Senha:</label>
                         <input type="password" id="confirmarSenha" name="confirmarSenha" required
                             placeholder="Confirme sua senha">
+                        <span id="erroSenha" style="color: red; display: none; font-size: 0.875rem;">
+                            As senhas não coincidem.
+                        </span>
                     </div>
 
                     <div class="form-item col mt-2">
                         <button type="button" class="btn btn-next m-auto">Avançar<i
                                 class="bi bi-chevron-compact-right ms-05"></i></button>
                     </div>
-
                 </div>
+
                 <!-- Etapa 2: Dados Pessoais -->
-                <div class="form-step col" id="step-dados-pessoais">
+                <div class="form-step col sep-personal-data " id="step-dados-pessoais">
 
                     <div class="form-item col">
                         <label for="cep">CEP:</label>
@@ -120,60 +82,49 @@
                     </div>
 
                 </div>
+
                 <!-- Etapa 3: Cadastro do Serviço -->
                 <div class="form-step col step-servico" id="step-servico">
-
-                    <div class="form-item col">
-                        <label for="categoria">Categoria:</label>
-                        <select id="categoria" name="categoria" required>
-                            <option value="">Selecione uma categoria</option>
-                            <!-- As opções serão adicionadas via JavaScript -->
+                    <!-- Serviço + botão adicionar -->
+                    <div class="form-item row flex-wrap gap-05">
+                        <select id="servico" required>
+                            <option value="">Selecione um serviço</option>
                         </select>
+                        <button id="addServicoBtn" class="add-service" disabled>Adicionar serviço</button>
                     </div>
 
-                    <div class="form-item col">
-                        <label for="servico">Serviço:</label>
-                        <select id="servico" name="servico" required disabled>
-                            <option value="">Selecione uma categoria primeiro</option>
-                        </select>
+                    <!-- Lista de serviços selecionados -->
+                    <div id="service-list" class="col gap-05">
+
                     </div>
 
-                    <div class="form-item col">
-                        <label for="valor">Valor do serviço (R$):</label>
-                        <input type="number" id="valor" name="valor" min="0" step="0.01" required>
-                    </div>
 
-                    <div class="form-item col">
-                        <label for="cobranca">Forma de cobrança:</label>
-                        <select id="cobranca" name="cobranca" required>
-                            <option value="">Selecione</option>
-                            <option value="hora">Por hora</option>
-                            <option value="visita">Por visita</option>
-                            <option value="fixo">Valor fixo</option>
-                        </select>
-                    </div>
-
+                    <!-- Sobre -->
                     <div class="form-item col">
                         <label for="sobre">Sobre você / experiência:</label>
                         <textarea id="sobre" name="sobre" rows="4"
                             placeholder="Conte um pouco sobre seu trabalho, tempo de experiência, etc."></textarea>
                     </div>
 
+                    <!-- Navegação -->
                     <div class="form-item buttons row justify-center gap-1">
                         <button type="button" class="btn btn-prev">Voltar</button>
                         <button type="button" class="btn btn-next">Finalizar Cadastro</button>
                     </div>
 
                 </div>
+
+
             </div>
         </div>
     </main>
 
 
 
-    <!-- <script src="/assets/js/service-list.js"></script> -->
-    <script src="/assets/js/app.js"></script>
+
+    <script src="/assets/js/auth.js"></script>
     <script src="/assets/js/service-list.js"></script>
+    <script src="/assets/js/validate-password.js"></script>
     <script src="/assets/js/cep-fetcher.js"></script>
 
 </body>
