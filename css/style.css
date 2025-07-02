@@ -1104,10 +1104,11 @@
             margin: 0 auto;
             max-width: 22rem;
             width: 100%;
+            min-width: 0;
             padding: 1rem 2rem;
             text-align: center;
             border-radius: .4rem;
-            font-size: 1.1rem;
+            font-size: clamp(.9rem, 2.5vw, 1.2rem);
             font-weight: 600;
             letter-spacing: 0.5px;
             box-shadow: 0 4px 18px rgba(2, 103, 252, 0.10), 0 1.5px 4px rgba(0, 0, 0, 0.10);
@@ -1123,11 +1124,14 @@
             overflow: hidden;
 
             &:hover,
-            &:active {
+            &:active,
+            &:focus-visible {
                 background: linear-gradient(90deg, #0267FC 0%, #2e7cd4 100%);
                 color: #fff;
                 transform: translateY(-2px) scale(1.04);
                 box-shadow: 0 8px 32px rgba(2, 103, 252, 0.16);
+                outline: 2px solid #0052ce;
+                outline-offset: 2px;
             }
         }
 
@@ -1139,6 +1143,29 @@
         & .btn-profissional {
             background: linear-gradient(90deg, #23201c 0%, #140F0B 100%);
             color: var(--light);
+        }
+    }
+
+    @media (max-width: 600px) {
+        & .auth-buttons {
+            gap: 0.7rem;
+
+            & .btn {
+                font-size: 1rem;
+                padding: 0.7rem 0.8rem;
+                max-width: 100%;
+                min-width: 0;
+                border-radius: .3rem;
+            }
+        }
+    }
+
+    @media (max-width: 400px) {
+        & .auth-buttons {
+            & .btn {
+                font-size: 0.95rem;
+                padding: 0.6rem 0.5rem;
+            }
         }
     }
 
