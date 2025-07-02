@@ -1,0 +1,261 @@
+<!-- tela inicial -->
+<div class="auth-buttons col align-center gap-2 p-4">
+    <!-- renderiza tela de cliente -->
+    <button class="btn btn-client">Sou Cliente</button>
+    <!-- renderiza tela do cliente -->
+    <button class="btn btn-profissional">Sou Profissional</button>
+</div>
+<!-- tela do cliente -->
+<div id="client-screen">
+    <!-- Primeira  Tela do Cliente -->
+    <div class="form-step step-register " id="step-register">
+
+        <div class="form-item col">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Seu Email">
+        </div>
+
+        <div class="form-item col" style="position: relative;">
+            <label for="senha">Senha (mínimo 6 caracteres):</label>
+            <input type="password" id="senha" name="senha" minlength="6" required placeholder="Sua senha">
+            <i class="bi bi-eye-slash toggle-senha" data-target="senha"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+        </div>
+
+        <!-- Campo de confirmação de senha -->
+        <div class="form-item col" style="position: relative;">
+            <label for="confirmarSenha">Confirmar Senha:</label>
+            <input type="password" id="confirmarSenha" name="confirmarSenha" required minlength="6"
+                placeholder="Confirme sua senha">
+            <i class="bi bi-eye-slash toggle-senha" data-target="confirmarSenha"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+            <span id="erroSenha" style="color: red; display: none; font-size: 0.875rem;">
+                As senhas não coincidem.
+            </span>
+        </div>
+
+
+        <div class="form-item col mt-2">
+            <button type="button" class="btn btn-next m-auto">Avançar<i
+                    class="bi bi-chevron-compact-right ms-05"></i></button>
+        </div>
+    </div>
+    <!-- Ultima  Tela do Cliente -->
+    <div class="form-step sep-personal-data " id="step-dados-pessoais">
+        <div class="form-item col">
+            <label for="nomeCompleto">Nome Completo:</label>
+            <input type="text" id="nomeCompleto" name="nomeCompleto" required placeholder="Seu nome completo">
+        </div>
+
+        <div class="form-item col">
+            <label>
+                <input type="checkbox" id="temCnpj" name="temCnpj">
+                Possuo CNPJ
+            </label>
+        </div>
+        <div class="form-item col" id="cnpjField" style="display: none;">
+            <label for="cnpj">CNPJ:</label>
+            <input type="text" id="cnpj" name="cnpj" placeholder="00.000.000/0000-00" maxlength="18">
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const checkbox = document.getElementById('temCnpj');
+                const cnpjField = document.getElementById('cnpjField');
+                checkbox.addEventListener('change', function () {
+                    cnpjField.style.display = this.checked ? 'block' : 'none';
+                    document.getElementById('cnpj').required = this.checked;
+                });
+            });
+        </script>
+
+        <div class="form-item col">
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado" required>
+                <option value="">Selecione o estado</option>
+                <option value="AC">Acre (AC)</option>
+                <option value="AL">Alagoas (AL)</option>
+                <option value="AP">Amapá (AP)</option>
+                <option value="AM">Amazonas (AM)</option>
+                <option value="BA">Bahia (BA)</option>
+                <option value="CE">Ceará (CE)</option>
+                <option value="DF">Distrito Federal (DF)</option>
+                <option value="ES">Espírito Santo (ES)</option>
+                <option value="GO">Goiás (GO)</option>
+                <option value="MA">Maranhão (MA)</option>
+                <option value="MT">Mato Grosso (MT)</option>
+                <option value="MS">Mato Grosso do Sul (MS)</option>
+                <option value="MG">Minas Gerais (MG)</option>
+                <option value="PA">Pará (PA)</option>
+                <option value="PB">Paraíba (PB)</option>
+                <option value="PR">Paraná (PR)</option>
+                <option value="PE">Pernambuco (PE)</option>
+                <option value="PI">Piauí (PI)</option>
+                <option value="RJ">Rio de Janeiro (RJ)</option>
+                <option value="RN">Rio Grande do Norte (RN)</option>
+                <option value="RS">Rio Grande do Sul (RS)</option>
+                <option value="RO">Rondônia (RO)</option>
+                <option value="RR">Roraima (RR)</option>
+                <option value="SC">Santa Catarina (SC)</option>
+                <option value="SP">São Paulo (SP)</option>
+                <option value="SE">Sergipe (SE)</option>
+                <option value="TO">Tocantins (TO)</option>
+            </select>
+        </div>
+
+        <div class="form-item col">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required>
+        </div>
+
+        <div class="form-item col">
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+        </div>
+
+        <div class="form-item col">
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" name="numero" required>
+        </div>
+
+        <div class="form-item buttons row justify-center gap-1">
+            <button type="button" class="btn btn-prev">Voltar</button>
+            <button type="button" class="btn btn-next">Finalizar Cadastro</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- tecla do prifissional -->
+<div id="profissional-screen">
+    <!--  Primeira tela do profissional: Login -->
+    <div class="form-step step-register " id="step-register">
+
+        <div class="form-item col">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Seu Email">
+        </div>
+
+        <div class="form-item col" style="position: relative;">
+            <label for="senha">Senha (mínimo 6 caracteres):</label>
+            <input type="password" id="senha" name="senha" minlength="6" required placeholder="Sua senha">
+            <i class="bi bi-eye-slash toggle-senha" data-target="senha"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+        </div>
+
+        <!-- Campo de confirmação de senha -->
+        <div class="form-item col" style="position: relative;">
+            <label for="confirmarSenha">Confirmar Senha:</label>
+            <input type="password" id="confirmarSenha" name="confirmarSenha" required minlength="6"
+                placeholder="Confirme sua senha">
+            <i class="bi bi-eye-slash toggle-senha" data-target="confirmarSenha"
+                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
+            <span id="erroSenha" style="color: red; display: none; font-size: 0.875rem;">
+                As senhas não coincidem.
+            </span>
+        </div>
+
+        <div class="form-item col mt-2">
+            <button type="button" class="btn btn-next m-auto">Avançar<i
+                    class="bi bi-chevron-compact-right ms-05"></i></button>
+        </div>
+    </div>
+
+    <!--  Segunda tela do profissional: Dados Pessoais -->
+    <div class="form-step sep-personal-data " id="step-dados-pessoais">
+        <div class="form-item col">
+            <label for="nomeCompleto">Nome Completo:</label>
+            <input type="text" id="nomeCompleto" name="nomeCompleto" required placeholder="Seu nome completo">
+        </div>
+        <div class="form-item col">
+            <label for="cep">CEP:</label>
+            <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" required>
+        </div>
+
+        <div class="form-item col">
+            <label for="estado">Estado:</label>
+            <select id="estado" name="estado" required>
+                <option value="">Selecione o estado</option>
+                <option value="AC">Acre (AC)</option>
+                <option value="AL">Alagoas (AL)</option>
+                <option value="AP">Amapá (AP)</option>
+                <option value="AM">Amazonas (AM)</option>
+                <option value="BA">Bahia (BA)</option>
+                <option value="CE">Ceará (CE)</option>
+                <option value="DF">Distrito Federal (DF)</option>
+                <option value="ES">Espírito Santo (ES)</option>
+                <option value="GO">Goiás (GO)</option>
+                <option value="MA">Maranhão (MA)</option>
+                <option value="MT">Mato Grosso (MT)</option>
+                <option value="MS">Mato Grosso do Sul (MS)</option>
+                <option value="MG">Minas Gerais (MG)</option>
+                <option value="PA">Pará (PA)</option>
+                <option value="PB">Paraíba (PB)</option>
+                <option value="PR">Paraná (PR)</option>
+                <option value="PE">Pernambuco (PE)</option>
+                <option value="PI">Piauí (PI)</option>
+                <option value="RJ">Rio de Janeiro (RJ)</option>
+                <option value="RN">Rio Grande do Norte (RN)</option>
+                <option value="RS">Rio Grande do Sul (RS)</option>
+                <option value="RO">Rondônia (RO)</option>
+                <option value="RR">Roraima (RR)</option>
+                <option value="SC">Santa Catarina (SC)</option>
+                <option value="SP">São Paulo (SP)</option>
+                <option value="SE">Sergipe (SE)</option>
+                <option value="TO">Tocantins (TO)</option>
+            </select>
+        </div>
+
+        <div class="form-item col">
+            <label for="cidade">Cidade:</label>
+            <input type="text" id="cidade" name="cidade" required>
+        </div>
+
+        <div class="form-item col">
+            <label for="endereco">Endereço:</label>
+            <input type="text" id="endereco" name="endereco" required>
+        </div>
+
+        <div class="form-item col">
+            <label for="numero">Número:</label>
+            <input type="text" id="numero" name="numero" required>
+        </div>
+
+        <div class="form-item row gap-1 buttons mt-2 justify-center">
+            <button type="button" class="btn btn-prev">Voltar</button>
+            <button type="button" class="btn btn-next">Avançar<i class="bi bi-chevron-compact-right ms-05"></i></button>
+        </div>
+
+    </div>
+
+    <!--  Ultima tela do profissional: Cadastro do Serviço -->
+    <div class="form-step  step-servico" id="step-servico">
+        <!-- Serviço + botão adicionar -->
+        <div class="form-item row flex-wrap gap-05">
+            <select id="servico" required>
+                <option value="">Selecione um serviço</option>
+            </select>
+            <button id="addServicoBtn" class="add-service" disabled>Adicionar serviço</button>
+        </div>
+
+        <!-- Lista de serviços selecionados -->
+        <div id="service-list" class="col gap-05">
+
+        </div>
+
+
+        <!-- Sobre -->
+        <div class="form-item col">
+            <label for="sobre">Sobre você / experiência:</label>
+            <textarea id="sobre" name="sobre" rows="4"
+                placeholder="Conte um pouco sobre seu trabalho, tempo de experiência, etc."></textarea>
+        </div>
+
+        <!-- Navegação -->
+        <div class="form-item buttons row justify-center gap-1">
+            <button type="button" class="btn btn-prev">Voltar</button>
+            <button type="button" class="btn btn-next">Finalizar Cadastro</button>
+        </div>
+
+    </div>
+
+</div>

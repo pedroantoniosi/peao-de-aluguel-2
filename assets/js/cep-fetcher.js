@@ -1,24 +1,43 @@
-const cepInput = document.getElementById("cep");
-const enderecoInput = document.getElementById("endereco");
-const cidadeInput = document.getElementById("cidade");
-const estadoInput = document.getElementById("estado");
+document.addEventListener('DOMContentLoaded', function () {
+    const cepInput = document.getElementById('cepProfissional');
 
-cepInput.addEventListener("blur", () => {
-    const cep = cepInput.value.replace(/\D/g, "");
-    if (cep.length !== 8) return;
+    // Formatação automática do CEP
+    cepInput.addEventListener('input', function () {
+        let value = this.value.replace(/\D/g, '');
+        if (value.length > 5) {
+            value = value.slice(0, 5) + '-' + value.slice(5, 8);
+        }
+        this.value = value;
+    });
 
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.erro) {
-                alert("CEP não encontrado.");
-                return;
-            }
-            enderecoInput.value = data.logradouro || "";
-            cidadeInput.value = data.localidade || "";
-            estadoInput.value = data.uf || "";
-        })
-        .catch(() => {
-            alert("Erro ao buscar CEP.");
-        });
+    // Busca e preenche os campos após o usuário sair do campo de CEP
+    cepInput.addEventListener('blur', function () {
+        const cep = this.value.replace(/\D/g, '');
+
+        if (cep.length !== 8) {
+            alert('CEP inválido. Certifique-se de digitar 8 dígitos.');
+            return;
+        }
+
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => {
+                if (!response.ok) throw new Error('Erro ao buscar CEP');
+                return response.json();
+            })
+            .then(data => {
+                if (data.erro) {
+                    alert('CEP não encontrado.');
+                    return;
+                }
+
+                // Preenche os campos
+                document.getElementById('estadoProfissional').value = data.uf;
+                document.getElementById('cidadeProfissional').value = data.localidade;
+                document.getElementById('enderecoProfissional').value = data.logradouro;
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert('Erro ao buscar o CEP.');
+            });
+    });
 });

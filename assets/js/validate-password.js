@@ -1,28 +1,31 @@
-function validateStep(step) {
-    const inputs = step.querySelectorAll("input, select, textarea");
-    const erroSenha = step.querySelector("#erroSenha");
-    const senha = step.querySelector("#senha");
-    const confirmarSenha = step.querySelector("#confirmarSenha");
+document.addEventListener('DOMContentLoaded', function () {
+    const senhaInput = document.getElementById('senhaCliente');
+    const confirmarSenhaInput = document.getElementById('confirmarSenhaCliente');
+    const erroSenha = document.getElementById('erroSenhaCliente');
+    const btnNext = document.querySelector('.btn-next');
 
-    let isValid = true;
-
-    // Validação HTML5 de todos os campos
-    inputs.forEach(input => {
-        if (!input.checkValidity()) {
-            input.reportValidity();
-            isValid = false;
-        }
-    });
-
-    // Validação extra: senha === confirmarSenha
-    if (senha && confirmarSenha) {
-        if (senha.value !== confirmarSenha.value) {
-            if (erroSenha) erroSenha.style.display = "block";
-            isValid = false;
+    function validarSenhas() {
+        const senha = senhaInput.value;
+        const confirmarSenha = confirmarSenhaInput.value;
+        if (senha.length >= 6 && confirmarSenha.length >= 6 && senha !== confirmarSenha) {
+            erroSenha.style.display = 'block';
+            return false;
         } else {
-            if (erroSenha) erroSenha.style.display = "none";
+            erroSenha.style.display = 'none';
+            return true;
         }
     }
 
-    return isValid;
-}
+    confirmarSenhaInput.addEventListener('input', validarSenhas);
+    senhaInput.addEventListener('input', validarSenhas);
+
+    btnNext.addEventListener('click', function (e) {
+        if (!validarSenhas()) {
+            confirmarSenhaInput.focus();
+            return;
+        }
+        // Aqui você pode avançar para o próximo passo do formulário
+        // Exemplo: document.querySelector('.form-step.step-register').style.display = 'none';
+        // Mostre o próximo passo do formulário conforme sua lógica
+    });
+});

@@ -1094,6 +1094,54 @@
     background-size: cover;
     min-height: 100dvh;
 
+    & .auth-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+
+        & .btn {
+            margin: 0 auto;
+            max-width: 22rem;
+            width: 100%;
+            padding: 1rem 2rem;
+            text-align: center;
+            border-radius: .4rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 18px rgba(2, 103, 252, 0.10), 0 1.5px 4px rgba(0, 0, 0, 0.10);
+            border: none;
+            outline: none;
+            cursor: pointer;
+            transition:
+                background 0.18s,
+                color 0.18s,
+                box-shadow 0.18s,
+                transform 0.12s;
+            position: relative;
+            overflow: hidden;
+
+            &:hover,
+            &:active {
+                background: linear-gradient(90deg, #0267FC 0%, #2e7cd4 100%);
+                color: #fff;
+                transform: translateY(-2px) scale(1.04);
+                box-shadow: 0 8px 32px rgba(2, 103, 252, 0.16);
+            }
+        }
+
+        & .btn-client {
+            background: linear-gradient(90deg, #fff 0%, #f3f6fa 100%);
+            color: var(--dark);
+        }
+
+        & .btn-profissional {
+            background: linear-gradient(90deg, #23201c 0%, #140F0B 100%);
+            color: var(--light);
+        }
+    }
+
     &::before {
         content: "";
         position: absolute;
@@ -1112,168 +1160,6 @@
         width: 100%;
         display: flex;
 
-        /* & .wrapper {
-            padding: 2rem;
-            max-width: 500px;
-            background-color: #1E1E1E;
-            height: 100%;
-
-            & .caption {
-                & .btn-back {
-                    width: fit-content;
-                    background: transparent;
-                    border: none;
-                    font-size: 1.2rem;
-                    color: #ccc;
-                    cursor: pointer;
-                    transition: color 0.3s ease;
-
-                    &:hover {
-                        color: #fff;
-                    }
-                }
-
-                & .title {
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    color: #fff;
-                }
-
-                & .text {
-                    font-size: 1rem;
-                    color: #aaa;
-                }
-            }
-
-            & .switch-auth {
-                background-color: #2a2a2a;
-                padding: 0.3rem;
-                border-radius: 50rem;
-
-                & .btn-rounded {
-                    background: none;
-                    border: none;
-                    padding: 0.6rem 1rem;
-                    border-radius: 50rem;
-                    cursor: pointer;
-                    font-weight: 500;
-                    color: #ccc;
-                    transition: background 0.3s, color 0.3s;
-
-                    &.active {
-                        background-color: #007bff;
-                        color: #fff;
-                    }
-
-                    &:hover:not(.active) {
-                        background-color: #3a3a3a;
-                        color: #fff;
-                    }
-                }
-            }
-
-            & .form-container {
-                & .form-item {
-                    align-items: center;
-                    gap: 0.5rem;
-
-
-                    & i {
-                        margin-top: 1rem;
-                        font-size: 1.2rem;
-                        color: var(--light);
-                    }
-
-                    & input {
-                        width: 100%;
-                        padding: 0.6rem 0.8rem;
-                        border-radius: 0.5rem;
-                        border: 1px solid #444;
-                        background-color: #222;
-                        color: #eee;
-                        font-size: 1rem;
-                        transition: border 0.3s, background 0.3s;
-
-                        &:focus {
-                            border-color: #007bff;
-                            outline: none;
-                            background-color: #1b1b1b;
-                        }
-
-                        &::placeholder {
-                            color: #777;
-                        }
-                    }
-
-                    & .form-item-misc {
-                        font-size: 0.875rem;
-                        margin-bottom: 0.2rem;
-                        display: block;
-                        color: #aaa;
-                    }
-                }
-
-                & .remember-row {
-                    font-size: 0.9rem;
-                    color: var(--light);
-
-                    & a {
-                        text-decoration: none;
-                        color: #007bff;
-                        transition: color 0.3s;
-
-                        &:hover {
-                            color: #66b2ff;
-                        }
-                    }
-
-                    & input[type="checkbox"] {
-                        accent-color: #007bff;
-                    }
-                }
-
-                & .btn-login {
-                    padding: 0.75rem 1.5rem;
-                    background-color: #007bff;
-                    color: white;
-                    border: none;
-                    border-radius: 0.5rem;
-                    font-size: 1rem;
-                    cursor: pointer;
-                    transition: background 0.3s;
-
-                    &:hover {
-                        background-color: #0056b3;
-                    }
-                }
-            }
-
-            & .register-form {
-                & label {
-                    font-size: .9rem;
-                }
-
-                & .btn-add-profile-photo {
-                    --btn-color: #4e4e4e;
-                    width: 100%;
-                    padding: 1.5rem;
-                    font-size: 1.2rem;
-                    border-radius: .4rem;
-                    border: 2px solid var(--btn-color);
-                    color: var(--btn-color);
-                    background-color: transparent;
-
-                    & i {
-                        color: var(--btn-color);
-                    }
-
-                    &:hover,
-                    &:hover i {
-                        --btn-color: var(--primary-color);
-                    }
-                }
-            }
-        } */
 
         & .wrapper {
             --focus-color: #007bff;
@@ -1316,12 +1202,9 @@
 
             }
 
-            & .form-step {
-                gap: 1.5rem;
+            /* & .form-step {
 
                 & .form-item {
-
-
                     & label {
                         font-size: .8rem;
                     }
@@ -1377,7 +1260,69 @@
                         }
                     }
                 }
+            } */
+
+            & .form-step {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem !important;
+
+                & input,
+                select,
+                textarea,
+                option {
+                    padding: .5rem 0;
+                    background-color: #1F1F1F !important;
+                    color: var(--light);
+                    border-bottom: .15rem solid #444;
+
+                    &:focus {
+                        border-color: var(--focus-color);
+                    }
+                }
+
+                & input {
+
+                    &:-webkit-autofill,
+                    &:-webkit-autofill:focus,
+                    &:-webkit-autofill:hover,
+                    &:-webkit-autofill:active {
+                        -webkit-box-shadow: 0 0 0 1000px #1F1F1F inset !important;
+                        box-shadow: 0 0 0 1000px #1F1F1F inset !important;
+                        -webkit-text-fill-color: var(--light) !important;
+                        background-color: #1F1F1F !important;
+                        transition: background-color 9999s ease-in-out 0s;
+                    }
+
+                    /* Aplica background #1F1F1F quando o input não está vazio */
+                    &:not(:placeholder-shown) {
+                        background-color: #1F1F1F !important;
+                    }
+                }
+
+                & .btn {
+                    padding: .6rem 1rem;
+                    max-width: 12rem;
+                    width: 100%;
+                    background-color: var(--focus-color);
+                    color: var(--light);
+                    border-radius: .4rem;
+                    font-weight: 600;
+
+                    &.btn-prev {
+                        background-color: var(--light);
+                        color: var(--focus-color);
+                    }
+
+                    &.btn-next {
+                        background-color: var(--focus-color);
+                        color: var(--light);
+                    }
+                }
             }
+
+
 
             & .step-servico {
                 & .add-service {

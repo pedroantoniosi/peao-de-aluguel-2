@@ -41,7 +41,8 @@ const categorias = [
     }
 ];
 
-const servicoSelect = document.getElementById("servico");
+// CORREÇÃO AQUI — ID atualizado conforme o HTML
+const servicoSelect = document.getElementById("servicoProfissional");
 const addServicoBtn = document.getElementById("addServicoBtn");
 const servicosList = document.getElementById("service-list");
 const servicosAdicionados = new Set();
@@ -95,36 +96,35 @@ addServicoBtn.addEventListener("click", () => {
 
     if (!servico || servicosAdicionados.has(servico) || servicosAdicionados.size >= 3) return;
 
-
     servicosAdicionados.add(servico);
 
     const div = document.createElement("div");
     div.innerHTML = `
-             <div class="service-item ">
-                            <div class="service-title form-item">
-                                <strong>${servico}</strong>
-                            </div>
-                            <div class="caption row gap-1">
-                                <div class="service-value form-item row gap-1">
-                                    <div class="form-item col">
-                                        <input type="text" class="service-input currency-input" placeholder="R$ 0,00"
-                                            required inputmode="decimal">
-                                    </div>
-                                    <div class="form-item col">
-                                        <select name="cobranca" class="cobranca-select" required>
-                                            <option value="hora">por hora</option>
-                                            <option value="visita">por visita</option>
-                                            <option value="fixo">fixo</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-item row">
-                                    <button type="button" class="remove-servico btn-small" title="Remover">
-                                        <i class="bi bi-x-circle"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+        <div class="service-item">
+            <div class="service-title form-item">
+                <strong>${servico}</strong>
+            </div>
+            <div class="caption row gap-1">
+                <div class="service-value form-item row gap-1">
+                    <div class="form-item col">
+                        <input type="text" class="service-input currency-input" placeholder="R$ 0,00"
+                            required inputmode="decimal">
+                    </div>
+                    <div class="form-item col">
+                        <select name="cobranca" class="cobranca-select" required>
+                            <option value="hora">por hora</option>
+                            <option value="visita">por visita</option>
+                            <option value="fixo">fixo</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-item row">
+                    <button type="button" class="remove-servico btn-small" title="Remover">
+                        <i class="bi bi-x-circle"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
     `;
 
     const inputValor = div.querySelector(".currency-input");
@@ -137,7 +137,7 @@ addServicoBtn.addEventListener("click", () => {
 
     servicosList.appendChild(div);
 
-    // Resetar
+    // Resetar seleção
     servicoSelect.value = "";
     addServicoBtn.disabled = true;
 });

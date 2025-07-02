@@ -20,99 +20,254 @@
                     <h2 class="title">Crie sua conta pessoal</h2>
                     <p class="text">Será enviado (solicitado) uma confirmação do cadastro por e-mail.</p>
                 </div>
-                <!-- Etapa 1: Login -->
-                <div class="form-step col step-register" id="step-register">
-                    <div class="form-item col">
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="email" required placeholder="Seu Email">
+
+                <div id="dashboard">
+                    <!-- tela inicial -->
+                    <div class="auth-buttons col align-center gap-2 p-4">
+                        <!-- renderiza tela de cliente -->
+                        <button class="btn btn-client">Sou Cliente</button>
+                        <!-- renderiza tela do cliente -->
+                        <button class="btn btn-profissional">Sou Profissional</button>
                     </div>
 
-                    <div class="form-item col">
-                        <label for="senha">Senha:</label>
-                        <input type="password" id="senha" name="senha" required placeholder="Sua senha">
+                    <!-- Tela do Cliente -->
+                    <div id="client-screen">
+                        <!-- Etapa 1 - Login Cliente -->
+                        <div class="form-step step-register">
+                            <div class="form-item col">
+                                <label for="emailCliente">Email:</label>
+                                <input type="email" id="emailCliente" name="emailCliente" required
+                                    placeholder="Seu Email">
+                            </div>
+
+                            <div class="form-item col" style="position: relative;">
+                                <label for="senhaCliente">Senha (mínimo 6 caracteres):</label>
+                                <input type="password" id="senhaCliente" name="senhaCliente" minlength="6" required
+                                    placeholder="Sua senha">
+                            </div>
+
+                            <div class="form-item col" style="position: relative;">
+                                <label for="confirmarSenhaCliente">Confirmar Senha:</label>
+                                <input type="password" id="confirmarSenhaCliente" name="confirmarSenhaCliente" required
+                                    minlength="6" placeholder="Confirme sua senha">
+                                <span id="erroSenhaCliente" style="color: red; display: none;">As senhas não
+                                    coincidem.</span>
+                            </div>
+
+                            <div class="form-item buttons row justify-center gap-1 mt-2">
+                                <button type="button" class="btn btn-prev">Voltar</button>
+                                <button type="button" class="btn btn-next">Avançar</button>
+                            </div>
+                        </div>
+
+                        <!-- Etapa 2 - Dados Pessoais Cliente -->
+                        <div class="form-step sep-personal-data">
+                            <div class="form-item col">
+                                <label for="nomeCompletoCliente">Nome Completo:</label>
+                                <input type="text" id="nomeCompletoCliente" name="nomeCompletoCliente" required
+                                    placeholder="Seu nome completo">
+                            </div>
+
+                            <div class="form-item col">
+                                <label>
+                                    <input type="checkbox" id="temCnpjCliente" name="temCnpjCliente">
+                                    Possuo CNPJ
+                                </label>
+                            </div>
+
+                            <div class="form-item col" id="cnpjFieldCliente" style="display: none;">
+                                <label for="cnpjCliente">CNPJ:</label>
+                                <input type="text" id="cnpjCliente" name="cnpjCliente" placeholder="00.000.000/0000-00"
+                                    maxlength="18">
+                            </div>
+
+                            <div class="form-item col">
+                                <label for="estadoCliente">Estado:</label>
+                                <select id="estadoCliente" name="estadoCliente" required>
+                                    <option value="">Selecione o estado</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+
+                            <div class="form-item col">
+                                <label for="cidadeCliente">Cidade:</label>
+                                <input type="text" id="cidadeCliente" name="cidadeCliente" required>
+                            </div>
+
+                            <div class="form-item col">
+                                <label for="enderecoCliente">Endereço:</label>
+                                <input type="text" id="enderecoCliente" name="enderecoCliente" required>
+                            </div>
+
+                            <div class="form-item col">
+                                <label for="numeroCliente">Número:</label>
+                                <input type="text" id="numeroCliente" name="numeroCliente" required>
+                            </div>
+
+                            <div class="form-item buttons row justify-center gap-1 mt-2">
+                                <button type="button" class="btn btn-prev">Voltar</button>
+                                <button type="button" class="btn btn-next">Finalizar Cadastro</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="form-item col">
-                        <label for="confirmarSenha">Confirmar Senha:</label>
-                        <input type="password" id="confirmarSenha" name="confirmarSenha" required
-                            placeholder="Confirme sua senha">
-                        <span id="erroSenha" style="color: red; display: none; font-size: 0.875rem;">
-                            As senhas não coincidem.
-                        </span>
+                    <!-- Tela do Profissional -->
+                    <div id="profissional-screen">
+                        <!-- Etapa 1 - Login Profissional -->
+                        <div class="form-step step-register">
+                            <div class="form-item col">
+                                <label for="emailProfissional">Email:</label>
+                                <input type="email" id="emailProfissional" name="emailProfissional" required
+                                    placeholder="Seu Email">
+                            </div>
+
+                            <div class="form-item col" style="position: relative;">
+                                <label for="senhaProfissional">Senha (mínimo 6 caracteres):</label>
+                                <input type="password" id="senhaProfissional" name="senhaProfissional" minlength="6"
+                                    required placeholder="Sua senha">
+                            </div>
+
+                            <div class="form-item col" style="position: relative;">
+                                <label for="confirmarSenhaProfissional">Confirmar Senha:</label>
+                                <input type="password" id="confirmarSenhaProfissional" name="confirmarSenhaProfissional"
+                                    required minlength="6" placeholder="Confirme sua senha">
+                                <span id="erroSenhaProfissional" style="color: red; display: none;">As senhas não
+                                    coincidem.</span>
+                            </div>
+
+                            <div class="form-item row gap-1 justify-center mt-2">
+                                <button type="button" class="btn btn-prev">← Voltar</button>
+                                <button type="button" class="btn btn-next">Avançar</button>
+                            </div>
+                        </div>
+
+                        <!-- Etapa 2 - Dados Pessoais Profissional -->
+                        <div class="form-step sep-personal-data">
+                            <div class="form-item col">
+                                <label for="nomeCompletoProfissional">Nome Completo:</label>
+                                <input type="text" id="nomeCompletoProfissional" name="nomeCompletoProfissional"
+                                    required placeholder="Seu nome completo">
+                            </div>
+
+                            <div class="form-item col">
+                                <label for="cepProfissional">CEP:</label>
+                                <input type="text" id="cepProfissional" name="cepProfissional" placeholder="00000-000"
+                                    maxlength="9" required>
+                            </div>
+
+                            <div class="form-item col">
+                                <label for="estadoProfissional">Estado:</label>
+                                <select id="estadoProfissional" name="estadoProfissional" required>
+                                    <option value="">Selecione o estado</option>
+                                    <option value="AC">Acre</option>
+                                    <option value="AL">Alagoas</option>
+                                    <option value="AP">Amapá</option>
+                                    <option value="AM">Amazonas</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="CE">Ceará</option>
+                                    <option value="DF">Distrito Federal</option>
+                                    <option value="ES">Espírito Santo</option>
+                                    <option value="GO">Goiás</option>
+                                    <option value="MA">Maranhão</option>
+                                    <option value="MT">Mato Grosso</option>
+                                    <option value="MS">Mato Grosso do Sul</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="PA">Pará</option>
+                                    <option value="PB">Paraíba</option>
+                                    <option value="PR">Paraná</option>
+                                    <option value="PE">Pernambuco</option>
+                                    <option value="PI">Piauí</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="RN">Rio Grande do Norte</option>
+                                    <option value="RS">Rio Grande do Sul</option>
+                                    <option value="RO">Rondônia</option>
+                                    <option value="RR">Roraima</option>
+                                    <option value="SC">Santa Catarina</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="SE">Sergipe</option>
+                                    <option value="TO">Tocantins</option>
+                                </select>
+                            </div>
+
+
+                            <div class="form-item col">
+                                <label for="cidadeProfissional">Cidade:</label>
+                                <input type="text" id="cidadeProfissional" name="cidadeProfissional" required>
+                            </div>
+
+                            <div class="form-item col">
+                                <label for="enderecoProfissional">Endereço:</label>
+                                <input type="text" id="enderecoProfissional" name="enderecoProfissional" required>
+                            </div>
+
+                            <div class="form-item col">
+                                <label for="numeroProfissional">Número:</label>
+                                <input type="text" id="numeroProfissional" name="numeroProfissional" required>
+                            </div>
+
+                            <div class="form-item row gap-1 buttons mt-2 justify-center mt-2">
+                                <button type="button" class="btn btn-prev">Voltar</button>
+                                <button type="button" class="btn btn-next">Avançar</button>
+                            </div>
+                        </div>
+
+                        <!-- Etapa 3 - Serviços -->
+                        <div class="form-step step-servico">
+                            <!-- Campo de seleção de serviços -->
+                            <div class="form-item row flex-wrap gap-05">
+                                <select id="servicoProfissional" required>
+                                    <option value="">Selecione um serviço</option>
+                                </select>
+                                <button id="addServicoBtn" class="add-service" disabled>Adicionar serviço</button>
+                            </div>
+
+                            <!-- Lista de serviços adicionados -->
+                            <div id="service-list" class="col gap-05"></div>
+
+                            <!-- Área de descrição -->
+                            <div class="form-item col">
+                                <label for="sobreProfissional">Sobre você / experiência:</label>
+                                <textarea id="sobreProfissional" name="sobreProfissional" rows="4"
+                                    placeholder="Conte um pouco sobre seu trabalho, tempo de experiência, etc."></textarea>
+                            </div>
+
+                            <!-- Botões de navegação -->
+                            <div class="form-item buttons row justify-center gap-1 mt-2">
+                                <button type="button" class="btn btn-prev">Voltar</button>
+                                <button type="button" class="btn btn-next">Finalizar Cadastro</button>
+                            </div>
+                        </div>
+
                     </div>
 
-                    <div class="form-item col mt-2">
-                        <button type="button" class="btn btn-next m-auto">Avançar<i
-                                class="bi bi-chevron-compact-right ms-05"></i></button>
-                    </div>
                 </div>
 
-                <!-- Etapa 2: Dados Pessoais -->
-                <div class="form-step col sep-personal-data " id="step-dados-pessoais">
-
-                    <div class="form-item col">
-                        <label for="cep">CEP:</label>
-                        <input type="text" id="cep" name="cep" placeholder="00000-000" maxlength="9" required>
-                    </div>
-
-                    <div class="form-item col">
-                        <label for="estado">Estado:</label>
-                        <input type="text" id="estado" name="estado" maxlength="2" readonly required>
-                    </div>
-
-                    <div class="form-item col">
-                        <label for="cidade">Cidade:</label>
-                        <input type="text" id="cidade" name="cidade" readonly required>
-                    </div>
-
-                    <div class="form-item col">
-                        <label for="endereco">Endereço:</label>
-                        <input type="text" id="endereco" name="endereco" required>
-                    </div>
-
-                    <div class="form-item col">
-                        <label for="numero">Número:</label>
-                        <input type="text" id="numero" name="numero" required>
-                    </div>
-
-                    <div class="form-item row gap-1 buttons mt-2 justify-center">
-                        <button type="button" class="btn btn-prev">Voltar</button>
-                        <button type="button" class="btn btn-next">Avançar<i
-                                class="bi bi-chevron-compact-right ms-05"></i></button>
-                    </div>
-
-                </div>
-
-                <!-- Etapa 3: Cadastro do Serviço -->
-                <div class="form-step col step-servico" id="step-servico">
-                    <!-- Serviço + botão adicionar -->
-                    <div class="form-item row flex-wrap gap-05">
-                        <select id="servico" required>
-                            <option value="">Selecione um serviço</option>
-                        </select>
-                        <button id="addServicoBtn" class="add-service" disabled>Adicionar serviço</button>
-                    </div>
-
-                    <!-- Lista de serviços selecionados -->
-                    <div id="service-list" class="col gap-05">
-
-                    </div>
-
-
-                    <!-- Sobre -->
-                    <div class="form-item col">
-                        <label for="sobre">Sobre você / experiência:</label>
-                        <textarea id="sobre" name="sobre" rows="4"
-                            placeholder="Conte um pouco sobre seu trabalho, tempo de experiência, etc."></textarea>
-                    </div>
-
-                    <!-- Navegação -->
-                    <div class="form-item buttons row justify-center gap-1">
-                        <button type="button" class="btn btn-prev">Voltar</button>
-                        <button type="button" class="btn btn-next">Finalizar Cadastro</button>
-                    </div>
-
-                </div>
 
 
             </div>
