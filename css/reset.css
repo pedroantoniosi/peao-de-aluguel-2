@@ -235,7 +235,7 @@ picture {
 }
 
 .mt-auto {
-  top: auto;
+  margin-top: auto;
 }
 
 .mb-auto {
@@ -713,7 +713,7 @@ picture {
 }
 
 /* Large screen devices (Desktops) */
-@media (max-width: 1024px) {
+@media (max-width: 992px) {
   .row-lg {
     display: flex;
     flex-direction: column;
