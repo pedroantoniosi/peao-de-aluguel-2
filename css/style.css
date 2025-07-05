@@ -1,7 +1,7 @@
 :root {
     --primary-color: #0267FC;
     --secondary-color: #5C6DBF;
-    --accent-color: #1d1f24;
+    --accent-color: #2F3337;
     --light: #fff;
     --dark: #0b0f14;
     --text-color: #1A1A1A;
@@ -23,11 +23,12 @@
                     padding: .2rem;
 
                     & .nav-item {
+                        display: flex;
                         max-width: 180px;
                         width: 100%;
                         padding: .6rem 1rem;
                         text-align: center;
-                        font-weight: 600;
+                        font-weight: bold;
                         font-size: clamp(.7rem, 2vw, 1rem);
                     }
                 }
