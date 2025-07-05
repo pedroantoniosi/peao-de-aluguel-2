@@ -8,82 +8,113 @@
 }
 
 #dashboard {
-
     background-color: var(--dark);
     color: var(--light);
 
     & .container {
-        & .user-navbar {
-            background-color: #1d1f24;
-            color: var(--light);
+        & .user-hero {
+            & .user-navbar {
+                background-color: #1d1f24;
+                color: var(--light);
 
-            & .nav-list {
-                display: flex;
-                justify-content: center;
-                padding: .2rem;
+                & .nav-list {
+                    display: flex;
+                    justify-content: center;
+                    padding: .2rem;
 
-
-                & .nav-item {
-                    max-width: 180px;
-                    width: 100%;
-                    padding: .6rem 1rem;
-                    text-align: center;
-                    font-weight: 600;
-                    font-size: clamp(.7rem, 2vw, 1rem);
-                    background-color: rgb(54, 54, 54);
-                    border-radius: 20rem;
+                    & .nav-item {
+                        max-width: 180px;
+                        width: 100%;
+                        padding: .6rem 1rem;
+                        text-align: center;
+                        font-weight: 600;
+                        font-size: clamp(.7rem, 2vw, 1rem);
+                    }
                 }
             }
-        }
 
-        & .user-dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
+            & .user-search {
+                position: relative;
 
-            & .card {
-                display: flex;
-                flex-direction: column;
-                border-radius: 1rem;
-                overflow: hidden;
-                box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 1px 0px, rgba(255, 255, 255, 0.15) 0px 1px 2px 1px;
-
-                & .card-img {
-                    & img {
-                        object-fit: cover;
-                        aspect-ratio: 1/1;
-                    }
+                & .search-bar {
+                    background-color: transparent;
+                    border: 2px solid var(--accent-color);
+                    border-radius: .6rem;
+                    color: var(--light);
                 }
 
-                & .card-caption {
-                    color: #e0e6f6;
-                    font-size: clamp(.8rem, 1.5vw, 1rem);
+                & .search-bar:focus,
+                & .search-bar:focus-within {
+                    border-color: var(--primary-color);
+                }
 
-                    & .user-name {
-                        font-size: clamp(1.1rem, 2vw, 1.2rem);
-                        color: var(--light);
+                & .autocomplete-list {
+                    display: flex;
+                    flex-direction: column;
+                    margin: 0 auto;
+                    background-color: var(--accent-color);
+                    position: absolute;
+                    width: calc(100% - 2rem);
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    z-index: 9;
+
+                    & .list-item {
+                        padding: .5rem;
                     }
+                }
+            }
 
-                    & .user-price {
-                        margin-top: auto;
-                        font-size: 1.2rem;
-                        font-weight: bold;
+            & .user-dashboard {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
 
-                        & span {
-                            font-weight: 400;
-                            font-size: .8rem;
+                & .card {
+                    display: flex;
+                    flex-direction: column;
+                    border-radius: 1rem;
+                    overflow: hidden;
+                    box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 1px 0px, rgba(255, 255, 255, 0.15) 0px 1px 2px 1px;
+
+                    & .card-img {
+                        & img {
+                            object-fit: cover;
+                            aspect-ratio: 16/9;
                         }
                     }
 
-                    & .btn-conect {
+                    & .card-caption {
+                        color: #e0e6f6;
+                        font-size: clamp(.8rem, 1.5vw, 1rem);
 
-                        padding: .6rem;
-                        border-radius: .8rem;
-                        font-size: 1rem;
-                        font-weight: 600;
-                        background: linear-gradient(90deg, #25D366 0%, #128c49 100%);
-                        /* WhatsApp green */
-                        color: var(--light);
+                        & .user-name {
+                            font-size: clamp(1.1rem, 2vw, 1.2rem);
+                            color: var(--light);
+                        }
+
+                        & .user-price {
+                            margin-top: auto;
+                            font-size: 1.2rem;
+                            font-weight: bold;
+
+                            & span {
+                                font-weight: 400;
+                                font-size: .8rem;
+                            }
+                        }
+
+                        & .btn-conect {
+                            margin-top: 1rem;
+                            padding: .6rem;
+                            border-radius: .4rem;
+                            font-size: 1rem;
+                            font-weight: 600;
+                            background: linear-gradient(90deg, #25D366 0%, #128c49 100%);
+                            /* WhatsApp green */
+                            color: var(--light);
+                        }
                     }
                 }
             }
@@ -1332,7 +1363,7 @@
             & .user-hero {
                 & .user-dashboard {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+                    grid-template-columns: repeat(2, 1fr);
 
                     & .card {
                         flex-direction: column;
@@ -1362,10 +1393,17 @@
 
                 & .user-dashboard {
                     display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+
+                    grid-template-columns: repeat(4, 1fr);
 
                     & .card {
                         flex-direction: column;
+
+                        & .card-img {
+                            & img {
+                                aspect-ratio: 1/1;
+                            }
+                        }
                     }
                 }
             }
