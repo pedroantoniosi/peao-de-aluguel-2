@@ -17,19 +17,26 @@
             <div class="user-hero col gap-1">
                 <nav class="user-navbar">
                     <ul class="nav-list gap-1 px-1">
-                        <li class="nav-item d-none-lg"><i class="bi bi-layout-split me-05"></i>Exibir</li>
-                        <li class="nav-item"><i class="bi bi-arrow-down-up me-05"></i>Ordenar</li>
-                        <li class="nav-item d-none-lg"><i class="bi bi-funnel-fill me-05"></i>Filtrar</li>
+                        <li class="nav-item d-none-lg"><i class="bi bi-layout-split me-05"></i>
+                            <p>Exibir</p>
+                        </li>
+                        <li class="nav-item"><i class="bi bi-arrow-down-up me-05"></i>
+                            <p>Ordenar</p>
+                        </li>
+                        <li class="nav-item d-none-lg"><i class="bi bi-funnel-fill me-05"></i>
+                            <p>Filtrar</p>
+                        </li>
                     </ul>
                 </nav>
-                <div class="user-search px-1">
+                <div class="user-search row">
+                    <div class="search-ico row align-center justify-center p-05"><i class="bi bi-search"></i></div>
                     <input class="search-bar w-100 p-05" type="text" id="search-bar"
                         placeholder="Buscar por nome, profissão ou serviço ex: Ana Souza, eletricista, pintura...">
-                    <ul id="sugestoes" class="autocomplete-list">
+                    <!-- <ul id="sugestoes" class="autocomplete-list">
 
-                    </ul>
+                    </ul> -->
                 </div>
-                <div id="user-dashboard" class="user-dashboard p-1">
+                <div id="user-dashboard" class="user-dashboard">
                 </div>
             </div>
         </div>
