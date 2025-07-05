@@ -3,7 +3,7 @@
     --secondary-color: #5C6DBF;
     --accent-color: #2F3337;
     --light: #fff;
-    --dark: #0b0f14;
+    --dark: #0B0F14;
     --text-color: #1A1A1A;
 }
 
@@ -12,10 +12,19 @@
     color: var(--light);
 
     & .container {
+        padding: 1rem;
+
         & .user-hero {
             & .user-navbar {
                 background-color: #1d1f24;
                 color: var(--light);
+                box-shadow: var(--primary-color) 0px 2px 6px;
+                ;
+                position: fixed;
+                width: 100%;
+                top: 0;
+                left: 0;
+                z-index: 9;
 
                 & .nav-list {
                     display: flex;
@@ -24,6 +33,7 @@
 
                     & .nav-item {
                         display: flex;
+                        justify-content: center;
                         max-width: 180px;
                         width: 100%;
                         padding: .6rem 1rem;
@@ -36,11 +46,20 @@
 
             & .user-search {
                 position: relative;
+                border: 2px solid var(--accent-color);
+                border-radius: .6rem;
+                overflow: hidden;
+                border-radius: .4rem;
+
+                & .search-ico {
+                    background-color: transparent;
+                    color: var(--accent-color);
+                }
 
                 & .search-bar {
+                    width: 100%;
+                    flex: 1;
                     background-color: transparent;
-                    border: 2px solid var(--accent-color);
-                    border-radius: .6rem;
                     color: var(--light);
                 }
 
@@ -112,7 +131,7 @@
                             border-radius: .4rem;
                             font-size: 1rem;
                             font-weight: 600;
-                            background: linear-gradient(90deg, #25D366 0%, #128c49 100%);
+                            background: linear-gradient(90deg, var(--primary-color) 0%, #007bff 100%);
                             /* WhatsApp green */
                             color: var(--light);
                         }
