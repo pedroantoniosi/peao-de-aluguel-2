@@ -36,7 +36,7 @@ function renderizarUsuarios(usuarios) {
                     <i class="bi bi-briefcase me-05"></i>${usuario.profissao}
                 </div>
                 <p class="user-adress"><i class="bi bi-geo-alt me-05"></i>${usuario.endereco}</p>
-                <div class="user-price">R$ ${usuario.preco},00<span class="ms-05 mt-auto"> ${usuario.tipoPreco},00</span></div>
+                <div class="user-price">R$ ${usuario.preco},00<span class="ms-05 mt-auto"> ${usuario.tipoPreco}</span></div>
                 <button class="btn-conect"><i class="bi bi-whatsapp me-05"></i>Quero contratar</button>
             </div>
         `;
