@@ -5,7 +5,7 @@
     "endereco": "Rua A Cantagalo, Barra Mansa/RJ",
     "preco": "R$ 140,00",
     "tipoPreco": "Hora",
-    "imagem": "/assets/img/profile.jpeg"
+    "imagem": "/assets/img/profile.png"
   },
   {
     "nome": "Ana Souza",
@@ -13,7 +13,7 @@
     "endereco": "Av. Central, Volta Redonda/RJ",
     "preco": "R$ 150,00",
     "tipoPreco": "Diária",
-    "imagem": "/assets/img/profile.jpeg"
+    "imagem": "/assets/img/profile.png"
   },
   {
     "nome": "Carlos Lima",
@@ -21,7 +21,7 @@
     "endereco": "Rua das Flores, Resende/RJ",
     "preco": "R$ 120,00",
     "tipoPreco": "Serviço",
-    "imagem": "/assets/img/profile.jpeg"
+    "imagem": "/assets/img/profile.png"
   },
   {
     "nome": "Juliana Alves",
@@ -29,7 +29,7 @@
     "endereco": "Rua Bela Vista, Barra Mansa/RJ",
     "preco": "R$ 60,00",
     "tipoPreco": "Aula",
-    "imagem": "/assets/img/profile.jpeg"
+    "imagem": "/assets/img/profile.png"
   },
   {
     "nome": "Roberto Silva",
@@ -37,6 +37,6 @@
     "endereco": "Rua do Comércio, Volta Redonda/RJ",
     "preco": "R$ 80,00",
     "tipoPreco": "Entrega",
-    "imagem": "/assets/img/profile.jpeg"
+    "imagem": "/assets/img/profile.png"
   }
 ]
