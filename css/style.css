@@ -25,32 +25,27 @@
                 border-bottom: 1.5px solid var(--accent-color);
 
                 & select,
-                & option {
+                & option,
+                & input {
+                    width: 100%;
                     padding: .5rem;
                     background-color: var(--dark);
                     color: var(--light);
                     outline: none;
-                    border: 1.5px solid var(--accent-color);
-
-                    &::focus,
-                    &:focus-within {
-                        border: var(--primary-color);
-                    }
-                }
-
-                & input {
-                    padding: .5rem;
-                    width: 100%;
-                    background-color: var(--dark);
-                    border: 1.5px solid var(--accent-color);
+                    border: .1rem solid var(--accent-color);
                     border-radius: .6rem;
-                    color: var(--light);
+
+                    &:hover {
+                        border-color: #555;
+                    }
 
                     &:focus,
                     &:focus-within {
                         border-color: var(--primary-color);
                     }
                 }
+
+
 
                 & .filter-title {
                     padding: .3rem;
@@ -135,6 +130,16 @@
                 border-radius: .6rem;
                 overflow: hidden;
                 border-radius: .4rem;
+
+                &:focus,
+                &:focus-within {
+                    border-color: var(--primary-color);
+                    background-color: var(--dark);
+                }
+
+                &:hover {
+                    border-color: #555;
+                }
 
                 & .search-ico {
                     background-color: transparent;
