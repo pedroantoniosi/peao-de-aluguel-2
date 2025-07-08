@@ -1,8 +1,9 @@
 [
   {
-    "nome": "Pedro Ferreira",
+    "nome": "Pietro Costa",
     "profissao": "Eletricista",
-    "endereco": "Rua A Cantagalo, Barra Mansa/RJ",
+    "endereco": "Rua das Palmeiras, Belo Horizonte/MG",
+    "UF": "MG",
     "preco": 22,
     "tipoPreco": "Hora",
     "imagem": "/assets/img/profile.png"
@@ -10,7 +11,8 @@
   {
     "nome": "Ana Souza",
     "profissao": "Diarista e Faxineira",
-    "endereco": "Av. Central, Volta Redonda/RJ",
+    "endereco": "Av. Paulista, São Paulo/SP",
+    "UF": "SP",
     "preco": 150,
     "tipoPreco": "Diária",
     "imagem": "/assets/img/profile.png"
@@ -18,7 +20,8 @@
   {
     "nome": "Carlos Lima",
     "profissao": "Técnico em Informática",
-    "endereco": "Rua das Flores, Resende/RJ",
+    "endereco": "Rua das Laranjeiras, Salvador/BA",
+    "UF": "BA",
     "preco": 1200,
     "tipoPreco": "Serviço",
     "imagem": "/assets/img/profile.png"
@@ -26,7 +29,8 @@
   {
     "nome": "Juliana Alves",
     "profissao": "Professora de Inglês",
-    "endereco": "Rua Bela Vista, Barra Mansa/RJ",
+    "endereco": "Rua das Acácias, Curitiba/PR",
+    "UF": "PR",
     "preco": 80,
     "tipoPreco": "Aula",
     "imagem": "/assets/img/profile.png"
@@ -34,7 +38,8 @@
   {
     "nome": "Roberto Silva",
     "profissao": "Motoboy e Entregador",
-    "endereco": "Rua do Comércio, Volta Redonda/RJ",
+    "endereco": "Rua do Sol, Porto Alegre/RS",
+    "UF": "RS",
     "preco": 12,
     "tipoPreco": "Entrega",
     "imagem": "/assets/img/profile.png"
