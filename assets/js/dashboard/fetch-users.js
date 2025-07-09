@@ -1,51 +1,59 @@
-
 let todosUsuarios = [];
 
 carregarUsuarios();
 
-// Consume API de usuarios
+// Carrega dados da API
 async function carregarUsuarios() {
     try {
         const resposta = await fetch('https://raw.githubusercontent.com/pedroantoniosi/peao-de-aluguel-2/refs/heads/main/assets/js/api/users.json');
-
         if (!resposta.ok) {
             throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
         }
-
         const dados = await resposta.json();
-        todosUsuarios = dados; // Armazena os usuários para busca
+        todosUsuarios = dados;
         renderizarUsuarios(todosUsuarios);
     } catch (erro) {
         console.error('Erro ao carregar os usuários:', erro.message);
     }
 }
 
-//Renderiza usuarios na tela
+// Renderiza usuários no DOM
 function renderizarUsuarios(usuarios) {
     const container = document.getElementById('user-dashboard');
-    container.innerHTML = ''; // Limpa o conteúdo anterior
+    container.innerHTML = '';
 
     usuarios.forEach(usuario => {
+        const { nome, imagem, endereco, servicos } = usuario;
+        const { rua, cidade, uf } = endereco;
+        const servico = servicos[0]; // exibe o primeiro serviço
+
         const card = document.createElement('div');
         card.classList.add('card');
         card.innerHTML = `
             <div class="card-img">
-                <img class="user-img" src="${usuario.imagem}" alt="">
+                <img class="user-img" src="${imagem}" alt="${nome}">
             </div>
             <div class="card-caption col p-05 gap-05 h-100">
-                <h2 class="user-name">${usuario.nome}</h2>
+                <h2 class="user-name">${nome}</h2>
                 <div class="user-job">
-                    <i class="bi bi-briefcase me-05"></i>${usuario.profissao}
+                    <i class="bi bi-briefcase me-05"></i>${servico.nome}
                 </div>
-                <p class="user-adress"><i class="bi bi-geo-alt me-05"></i>${usuario.endereco}</p>
-                <div class="user-price">R$ ${usuario.preco},00<span class="ms-05 mt-auto"> ${usuario.tipoPreco}</span></div>
-                <button class="btn-conect"><i class="bi bi-whatsapp me-05"></i>Quero contratar</button>
+                <p class="user-adress">
+                    <i class="bi bi-geo-alt me-05"></i>${rua}, ${cidade}/${uf}
+                </p>
+                <div class="user-price">
+                    R$ ${servico.preco},00<span class="ms-05 mt-auto"> ${servico.tipoPreco}</span>
+                </div>
+                <button class="btn-conect">
+                    <i class="bi bi-whatsapp me-05"></i>Quero contratar
+                </button>
             </div>
         `;
         container.appendChild(card);
     });
 }
 
+// Debounce para busca
 function debounce(func, delay) {
     let timeout;
     return function (...args) {
@@ -54,25 +62,40 @@ function debounce(func, delay) {
     };
 }
 
+// Busca usuários
 const input = document.getElementById('search-bar');
 
-// Busca e renderiza os usuários com base no termo digitado
 const buscarUsuarios = debounce(() => {
     const termo = input.value.trim().toLowerCase();
 
-    const resultados = todosUsuarios.filter(usuario =>
-        usuario.nome.toLowerCase().includes(termo) ||
-        usuario.profissao.toLowerCase().includes(termo) ||
-        usuario.endereco.toLowerCase().includes(termo) ||
-        (usuario.servicos?.join(' ').toLowerCase().includes(termo) || false)
-    );
+    const resultados = todosUsuarios.filter(usuario => {
+        const { nome, endereco, servicos } = usuario;
+        const { rua, cidade, uf } = endereco;
+
+        // Procura em todos os serviços do usuário
+        const servicoMatch = servicos.some(servico =>
+            servico.nome.toLowerCase().includes(termo) ||
+            servico.categoria.toLowerCase().includes(termo) ||
+            servico.tipoPreco.toLowerCase().includes(termo)
+        );
+
+        return (
+            nome.toLowerCase().includes(termo) ||
+            rua.toLowerCase().includes(termo) ||
+            cidade.toLowerCase().includes(termo) ||
+            uf.toLowerCase().includes(termo) ||
+            servicoMatch
+        );
+    });
 
     renderizarUsuarios(resultados);
 }, 300);
+
 input.addEventListener('input', buscarUsuarios);
 
 
-//Filtra usuarios por preços
+
+// Filtro por faixa de preço
 document.addEventListener('DOMContentLoaded', () => {
     const precoMinInput = document.getElementById('precoMin');
     const precoMaxInput = document.getElementById('precoMax');
@@ -85,33 +108,43 @@ document.addEventListener('DOMContentLoaded', () => {
         const precoMax = parseInt(precoMaxInput.value) || Infinity;
 
         const resultados = todosUsuarios.filter(usuario => {
-            const precoUsuario = usuario.preco; // já é número inteiro
-
-            return precoUsuario >= precoMin && precoUsuario <= precoMax;
+            const preco = usuario.servicos[0].preco;
+            return preco >= precoMin && preco <= precoMax;
         });
 
         renderizarUsuarios(resultados);
     }
 });
 
-//Filtra usuarios pelo Estado
+
+// Filtro por estado (UF)
 document.addEventListener('DOMContentLoaded', () => {
     const estadoSelect = document.getElementById('estadoProfissional');
-
     estadoSelect.addEventListener('change', aplicarFiltroEstado);
 
     function aplicarFiltroEstado() {
         const estadoSelecionado = estadoSelect.value;
 
         const resultados = todosUsuarios.filter(usuario => {
-            return !estadoSelecionado || usuario.UF === estadoSelecionado;
+            return !estadoSelecionado || usuario.endereco.uf === estadoSelecionado;
         });
 
         renderizarUsuarios(resultados);
     }
 });
 
-
+// Toggle do botão de filtro
 document.getElementById('btn-filter').onclick = () => {
-    document.querySelector('.user-filter').classList.toggle('active');
+    const filter = document.querySelector('.user-filter');
+    filter.classList.toggle('active');
+    if (filter.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
 };
+
+//Botão para fechar o filtro
+document.getElementById('btn-close-filter').onclick = () => {
+    document.querySelector('.user-filter').classList.remove('active')
+}

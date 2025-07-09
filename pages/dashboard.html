@@ -28,8 +28,28 @@
             </nav>
             <div class="toggle"><i class="bi bi-list"></i></div>
         </header> -->
+        <nav class="user-navbar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <i class="bi bi-layout-split me-05"></i>
+                    <p class="nav-text">Inicio</p>
+                </li>
+                <li class="nav-item">
+                    <i class="bi bi-layout-split me-05"></i>
+                    <p class="nav-text">Exibir</p>
+                </li>
+                <li class="nav-item">
+                    <i class="bi bi-funnel-fill me-05"></i>
+                    <p id="btn-filter" class="nav-text">Filtrar</p>
+                </li>
+            </ul>
+        </nav>
         <div class="container gap-1">
             <div class="user-filter d-flex-lg col">
+                <div class="user-filter-caption row align-center justify-center p-1 ">
+                    <button id="btn-close-filter" class="me-auto"><i class="bi bi-arrow-bar-left"></i></button>
+                    <p class="me-auto" style="font-weight: 500;">Filtrar</p>
+                </div>
                 <div class="card">
                     <h2 class="filter-title">Filtros aplicados</h2>
                     <div id="active-filters" class="active-item row flex-wrap gap-1">
@@ -101,22 +121,6 @@
                 </div>
             </div>
         </div>
-        <nav class="user-navbar">
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <i class="bi bi-layout-split me-05"></i>
-                    <p class="nav-text">Exibir</p>
-                </li>
-                <li class="nav-item">
-                    <i class="bi bi-arrow-down-up me-05"></i>
-                    <p class="nav-text">Ordenar</p>
-                </li>
-                <li class="nav-item">
-                    <i class="bi bi-funnel-fill me-05"></i>
-                    <p id="btn-filter" class="nav-text">Filtrar</p>
-                </li>
-            </ul>
-        </nav>
     </div>
 
 

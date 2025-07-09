@@ -1,9 +1,9 @@
 :root {
     --primary-color: #0267FC;
-    --secondary-color: hsl(0, 0, 10%);
+    --secondary-color: hsl(0, 0%, 10%);
     --accent-color: hsl(0, 0%, 15%);
     --light: #fff;
-    --dark: hsl(0, 0%, 6%);
+    --dark: hsl(0, 0%, 5%);
     --text-color: hsl(0, 0%, 10%);
 }
 
@@ -15,9 +15,34 @@
         padding: 60px .5rem .5rem .5rem;
 
         & .user-filter {
+            display: none;
+
             &.active {
-                display: none !important;
+                width: 100%;
+                left: 0;
+                top: 0;
+                position: absolute;
+                display: flex !important;
+                height: 100svh !important;
+                z-index: 2;
+                overflow: auto;
+                background-color: var(--dark);
+
+                & #btn-close-filter {
+                    display: flex;
+                    font-size: 1.2rem;
+                    background-color: transparent;
+                    color: var(--light);
+                }
             }
+
+            & #btn-close-filter {
+                display: flex;
+                font-size: 1.2rem;
+                background-color: transparent;
+                color: var(--light);
+            }
+
 
             & .card {
                 padding: 1rem;
@@ -218,6 +243,7 @@
         bottom: 0;
         left: 0;
         width: 100%;
+        z-index: 9;
 
         & .nav-list {
             display: flex;
@@ -242,6 +268,8 @@
             }
         }
     }
+
+
 }
 
 .index {
@@ -251,8 +279,6 @@
     & a {
         color: var(--light);
     }
-
-
 
 
     & .btn-login,
@@ -352,121 +378,6 @@
         margin-bottom: 1rem;
     }
 
-    & header {
-        width: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 100;
-        background: transparent;
-        transition: background 0.3s, box-shadow 0.3s, backdrop-filter 0.3s;
-    }
-
-    & header.active {
-        background: rgba(31, 32, 36, 0.6);
-        backdrop-filter: blur(16px);
-        -webkit-backdrop-filter: blur(16px);
-        box-shadow: 0 4px 24px rgba(2, 103, 252, 0.08), 0 1.5px 4px rgba(0, 0, 0, 0.12);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    }
-
-    & .logo {
-        width: max(2rem, 2.5vw);
-    }
-
-    & .toggle {
-        display: none;
-    }
-
-    @media (max-width: 992px) {
-        & .toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2.8rem;
-            height: 2.8rem;
-            border-radius: 50%;
-            background: rgba(93, 158, 255, 0.377);
-            cursor: pointer;
-            transition: background 0.18s, box-shadow 0.18s, transform 0.12s;
-            box-shadow: 0 2px 8px rgba(2, 103, 252, 0.08);
-            position: relative;
-            z-index: 200;
-            border: none;
-            outline: none;
-        }
-
-        & .toggle i {
-            font-size: 1.6rem;
-            color: var(--light);
-            transition: color 0.18s;
-        }
-
-        & .toggle:hover {
-            background: var(--primary-color);
-            box-shadow: 0 4px 18px rgba(2, 103, 252, 0.14);
-            transform: scale(1.06);
-        }
-
-        & .toggle:focus {
-            background: var(--primary-color);
-            box-shadow: 0 4px 18px rgba(2, 103, 252, 0.14);
-            transform: scale(1.06);
-        }
-
-        & .toggle:hover i {
-            color: #fff;
-        }
-
-        & .toggle:focus i {
-            color: #fff;
-        }
-    }
-
-    @media (max-width: 1024px) {
-        & .toggle {
-            display: flex;
-        }
-    }
-
-    @media (max-width: 600px) {
-        & .toggle {
-            width: 2.2rem;
-            height: 2.2rem;
-        }
-
-        & .toggle i {
-            font-size: 1.2rem;
-        }
-    }
-
-    & .navbar {
-        display: flex;
-        align-items: center;
-    }
-
-    & .nav-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        gap: 1.5rem;
-    }
-
-    & .nav-list li {
-        display: flex;
-        align-items: center;
-    }
-
-    & .header-container .nav-link:not(:nth-last-child(-n+2)) {
-        padding: .5rem 1rem;
-        border-radius: 20rem;
-
-        &:hover {
-            background-color: #23201c;
-            color: var(--primary-color);
-        }
-    }
 
     & .hero-container {
         position: relative;
@@ -1461,23 +1372,7 @@
     }
 }
 
-@media (min-width: 500px) and (max-width: 767.98px) {
-    #dashboard {
-        & .container {
-            & .user-hero {
-                & .user-dashboard {
-                    display: grid;
-                    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
 
-                    & .card {
-                        display: flex;
-
-                    }
-                }
-            }
-        }
-    }
-}
 
 @media (min-width: 768px) {
     #dashboard {
@@ -1499,6 +1394,37 @@
 @media (min-width: 992px) {
 
     #dashboard {
+        & .user-navbar {
+            position: relative;
+            background-color: var(--secondary-color);
+            margin-bottom: 1rem;
+
+            & .nav-list {
+                margin: 0 auto;
+                max-width: 1360px;
+                display: flex;
+                justify-content: flex-end;
+                gap: 0;
+
+
+                & .nav-item {
+                    padding: 1rem;
+                    flex: 0;
+                    display: flex;
+                    flex-direction: row;
+
+                    & i {
+                        font-size: 1rem;
+                    }
+
+                    & .nav-text {
+                        font-size: .8rem;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
         & .container {
             padding: 0 1rem;
             margin: 0 auto;
@@ -1507,12 +1433,17 @@
             grid-template-columns: 335px 1fr;
 
             & .user-filter {
+                display: flex;
                 margin-top: 3rem;
                 height: 100svh;
                 overflow: auto;
                 /* Scrollbar personalizado: fino, moderno e dark mode */
                 scrollbar-width: thin;
                 scrollbar-color: #303436 #181818;
+
+                & .user-filter-caption {
+                    display: none;
+                }
 
                 &::-webkit-scrollbar {
                     width: 8px;
