@@ -2,6 +2,7 @@
 let todosUsuarios = [];
 
 carregarUsuarios();
+
 // Consume API de usuarios
 async function carregarUsuarios() {
     try {
@@ -18,6 +19,7 @@ async function carregarUsuarios() {
         console.error('Erro ao carregar os usuários:', erro.message);
     }
 }
+
 //Renderiza usuarios na tela
 function renderizarUsuarios(usuarios) {
     const container = document.getElementById('user-dashboard');
@@ -91,3 +93,25 @@ document.addEventListener('DOMContentLoaded', () => {
         renderizarUsuarios(resultados);
     }
 });
+
+//Filtra usuarios pelo Estado
+document.addEventListener('DOMContentLoaded', () => {
+    const estadoSelect = document.getElementById('estadoProfissional');
+
+    estadoSelect.addEventListener('change', aplicarFiltroEstado);
+
+    function aplicarFiltroEstado() {
+        const estadoSelecionado = estadoSelect.value;
+
+        const resultados = todosUsuarios.filter(usuario => {
+            return !estadoSelecionado || usuario.UF === estadoSelecionado;
+        });
+
+        renderizarUsuarios(resultados);
+    }
+});
+
+
+document.getElementById('btn-filter').onclick = () => {
+    document.querySelector('.user-filter').classList.toggle('active');
+};

@@ -1,89 +1,82 @@
 [
   {
-    "category": "Casa & Construção",
-    "services": [
-      "Eletricistas",
-      "Encanadores",
-      "Pedreiros",
-      "Pintores",
-      "Gesseiros",
-      "Azulejistas",
-      "Marceneiros",
-      "Serralheiros",
-      "Vidraceiros"
+    "id": 1,
+    "nome": "Pietro Costa",
+    "endereco": "Rua das Palmeiras, Belo Horizonte/MG",
+    "uf": "MG",
+    "imagem": "/assets/img/profile.png",
+    "servicos": [
+      {
+        "id": 1,
+        "nome": "Eletricistas",
+        "categoria": "Casa & Construção",
+        "preco": 22,
+        "tipoPreco": "Hora"
+      }
     ]
   },
   {
-    "category": "Limpeza & Conservação",
-    "services": [
-      "Diaristas e Faxineiras",
-      "Limpeza de estofados e carpetes",
-      "Jardineiros"
+    "id": 2,
+    "nome": "Ana Souza",
+    "endereco": "Av. Paulista, São Paulo/SP",
+    "uf": "SP",
+    "imagem": "/assets/img/profile.png",
+    "servicos": [
+      {
+        "id": 2,
+        "nome": "Diaristas e Faxineiras",
+        "categoria": "Limpeza & Conservação",
+        "preco": 150,
+        "tipoPreco": "Diária"
+      }
     ]
   },
   {
-    "category": "Manutenção & Reparos",
-    "services": [
-      "Técnicos em eletrodomésticos",
-      "Técnicos em ar-condicionado",
-      "Chaveiros",
-      "Desentupidores",
-      "Montadores e instaladores de móveis"
+    "id": 3,
+    "nome": "Carlos Lima",
+    "endereco": "Rua das Laranjeiras, Salvador/BA",
+    "uf": "BA",
+    "imagem": "/assets/img/profile.png",
+    "servicos": [
+      {
+        "id": 3,
+        "nome": "Técnicos em informática",
+        "categoria": "Suporte & Tecnologia",
+        "preco": 1200,
+        "tipoPreco": "Serviço"
+      }
     ]
   },
   {
-    "category": "Educação & Aulas Particulares",
-    "services": [
-      "Professores particulares (todas as matérias)",
-      "Reforço escolar",
-      "Aulas de idiomas",
-      "Aulas de música",
-      "Personal trainers"
+    "id": 4,
+    "nome": "Juliana Alves",
+    "endereco": "Rua das Acácias, Curitiba/PR",
+    "uf": "PR",
+    "imagem": "/assets/img/profile.png",
+    "servicos": [
+      {
+        "id": 4,
+        "nome": "Aulas de idiomas",
+        "categoria": "Educação & Aulas Particulares",
+        "preco": 80,
+        "tipoPreco": "Aula"
+      }
     ]
   },
   {
-    "category": "Suporte & Tecnologia",
-    "services": [
-      "Técnicos em informática",
-      "Instalação de equipamentos eletrônicos",
-      "Suporte técnico remoto ou presencial"
-    ]
-  },
-  {
-    "category": "Beleza & Cuidados Pessoais",
-    "services": [
-      "Cabeleireiros e manicures (domicílio)",
-      "Barbeiros",
-      "Serviços de salão de beleza"
-    ]
-  },
-  {
-    "category": "Cuidados Automotivos",
-    "services": [
-      "Mecânicos móveis",
-      "Lavagem e higienização de veículos",
-      "Funileiros e reparadores de pintura"
-    ]
-  },
-  {
-    "category": "Eventos & Serviços Especiais",
-    "services": [
-      "Fotógrafos",
-      "Cozinheiros e chefs domiciliares",
-      "Garçons e copeiras",
-      "Recreadores e animadores de festas"
-    ]
-  },
-  {
-    "category": "Serviços para Pets",
-    "services": ["Banho e tosa móvel", "Hospedagem para pets"]
-  },
-  {
-    "category": "Entregas & Transporte",
-    "services": [
-      "Motoboys e entregadores",
-      "Fretes pequenos",
-      "Serviços de mudança"
+    "id": 5,
+    "nome": "Roberto Silva",
+    "endereco": "Rua do Sol, Porto Alegre/RS",
+    "uf": "RS",
+    "imagem": "/assets/img/profile.png",
+    "servicos": [
+      {
+        "id": 5,
+        "nome": "Motoboys e entregadores",
+        "categoria": "Entregas & Transporte",
+        "preco": 12,
+        "tipoPreco": "Entrega"
+      }
     ]
   }
 ]
