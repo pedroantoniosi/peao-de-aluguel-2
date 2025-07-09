@@ -2,9 +2,12 @@
   {
     "id": 1,
     "nome": "Pietro Costa",
-    "endereco": "Rua das Palmeiras, Belo Horizonte/MG",
-    "uf": "MG",
     "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Rua das Palmeiras",
+      "cidade": "Belo Horizonte",
+      "uf": "MG"
+    },
     "servicos": [
       {
         "id": 1,
@@ -18,9 +21,12 @@
   {
     "id": 2,
     "nome": "Ana Souza",
-    "endereco": "Av. Paulista, São Paulo/SP",
-    "uf": "SP",
     "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Av. Paulista",
+      "cidade": "São Paulo",
+      "uf": "SP"
+    },
     "servicos": [
       {
         "id": 2,
@@ -34,9 +40,12 @@
   {
     "id": 3,
     "nome": "Carlos Lima",
-    "endereco": "Rua das Laranjeiras, Salvador/BA",
-    "uf": "BA",
     "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Rua das Laranjeiras",
+      "cidade": "Salvador",
+      "uf": "BA"
+    },
     "servicos": [
       {
         "id": 3,
@@ -50,9 +59,12 @@
   {
     "id": 4,
     "nome": "Juliana Alves",
-    "endereco": "Rua das Acácias, Curitiba/PR",
-    "uf": "PR",
     "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Rua das Acácias",
+      "cidade": "Curitiba",
+      "uf": "PR"
+    },
     "servicos": [
       {
         "id": 4,
@@ -66,9 +78,12 @@
   {
     "id": 5,
     "nome": "Roberto Silva",
-    "endereco": "Rua do Sol, Porto Alegre/RS",
-    "uf": "RS",
     "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Rua do Sol",
+      "cidade": "Porto Alegre",
+      "uf": "RS"
+    },
     "servicos": [
       {
         "id": 5,

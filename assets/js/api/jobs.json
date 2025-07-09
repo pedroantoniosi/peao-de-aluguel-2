@@ -1,89 +1,176 @@
 [
   {
-    "category": "Casa & Construção",
-    "services": [
-      "Eletricistas",
-      "Encanadores",
-      "Pedreiros",
-      "Pintores",
-      "Gesseiros",
-      "Azulejistas",
-      "Marceneiros",
-      "Serralheiros",
-      "Vidraceiros"
+    "id": 1,
+    "categoria": "Casa & Construção",
+    "slug": "casa-construcao",
+    "servico": [
+      { "id": 101, "nome": "Eletricistas", "slug": "eletricistas" },
+      { "id": 102, "nome": "Encanadores", "slug": "encanadores" },
+      { "id": 103, "nome": "Pedreiros", "slug": "pedreiros" },
+      { "id": 104, "nome": "Pintores", "slug": "pintores" },
+      { "id": 105, "nome": "Gesseiros", "slug": "gesseiros" },
+      { "id": 106, "nome": "Azulejistas", "slug": "azulejistas" },
+      { "id": 107, "nome": "Marceneiros", "slug": "marceneiros" },
+      { "id": 108, "nome": "Serralheiros", "slug": "serralheiros" },
+      { "id": 109, "nome": "Vidraceiros", "slug": "vidraceiros" }
     ]
   },
   {
-    "category": "Limpeza & Conservação",
-    "services": [
-      "Diaristas e Faxineiras",
-      "Limpeza de estofados e carpetes",
-      "Jardineiros"
+    "id": 2,
+    "categoria": "Limpeza & Conservação",
+    "slug": "limpeza-conservacao",
+    "servico": [
+      {
+        "id": 201,
+        "nome": "Diaristas e Faxineiras",
+        "slug": "diaristas-faxineiras"
+      },
+      {
+        "id": 202,
+        "nome": "Limpeza de estofados e carpetes",
+        "slug": "limpeza-estofados-carpete"
+      },
+      { "id": 203, "nome": "Jardineiros", "slug": "jardineiros" }
     ]
   },
   {
-    "category": "Manutenção & Reparos",
-    "services": [
-      "Técnicos em eletrodomésticos",
-      "Técnicos em ar-condicionado",
-      "Chaveiros",
-      "Desentupidores",
-      "Montadores e instaladores de móveis"
+    "id": 3,
+    "categoria": "Manutenção & Reparos",
+    "slug": "manutencao-reparos",
+    "servico": [
+      {
+        "id": 301,
+        "nome": "Técnicos em eletrodomésticos",
+        "slug": "tecnicos-eletrodomesticos"
+      },
+      {
+        "id": 302,
+        "nome": "Técnicos em ar-condicionado",
+        "slug": "tecnicos-ar-condicionado"
+      },
+      { "id": 303, "nome": "Chaveiros", "slug": "chaveiros" },
+      { "id": 304, "nome": "Desentupidores", "slug": "desentupidores" },
+      {
+        "id": 305,
+        "nome": "Montadores e instaladores de móveis",
+        "slug": "montadores-moveis"
+      }
     ]
   },
   {
-    "category": "Educação & Aulas Particulares",
-    "services": [
-      "Professores particulares (todas as matérias)",
-      "Reforço escolar",
-      "Aulas de idiomas",
-      "Aulas de música",
-      "Personal trainers"
+    "id": 4,
+    "categoria": "Educação & Aulas Particulares",
+    "slug": "educacao-aulas-particulares",
+    "servico": [
+      {
+        "id": 401,
+        "nome": "Professores particulares (todas as matérias)",
+        "slug": "professores-particulares"
+      },
+      { "id": 402, "nome": "Reforço escolar", "slug": "reforco-escolar" },
+      { "id": 403, "nome": "Aulas de idiomas", "slug": "aulas-idiomas" },
+      { "id": 404, "nome": "Aulas de música", "slug": "aulas-musica" },
+      { "id": 405, "nome": "Personal trainers", "slug": "personal-trainers" }
     ]
   },
   {
-    "category": "Suporte & Tecnologia",
-    "services": [
-      "Técnicos em informática",
-      "Instalação de equipamentos eletrônicos",
-      "Suporte técnico remoto ou presencial"
+    "id": 5,
+    "categoria": "Suporte & Tecnologia",
+    "slug": "suporte-tecnologia",
+    "servico": [
+      {
+        "id": 501,
+        "nome": "Técnicos em informática",
+        "slug": "tecnicos-informatica"
+      },
+      {
+        "id": 502,
+        "nome": "Instalação de equipamentos eletrônicos",
+        "slug": "instalacao-eletronicos"
+      },
+      {
+        "id": 503,
+        "nome": "Suporte técnico remoto ou presencial",
+        "slug": "suporte-tecnico"
+      }
     ]
   },
   {
-    "category": "Beleza & Cuidados Pessoais",
-    "services": [
-      "Cabeleireiros e manicures (domicílio)",
-      "Barbeiros",
-      "Serviços de salão de beleza"
+    "id": 6,
+    "categoria": "Beleza & Cuidados Pessoais",
+    "slug": "beleza-cuidados-pessoais",
+    "servico": [
+      {
+        "id": 601,
+        "nome": "Cabeleireiros e manicures (domicílio)",
+        "slug": "cabeleireiros-manicures"
+      },
+      { "id": 602, "nome": "Barbeiros", "slug": "barbeiros" },
+      {
+        "id": 603,
+        "nome": "Serviços de salão de beleza",
+        "slug": "salao-beleza"
+      }
     ]
   },
   {
-    "category": "Cuidados Automotivos",
-    "services": [
-      "Mecânicos móveis",
-      "Lavagem e higienização de veículos",
-      "Funileiros e reparadores de pintura"
+    "id": 7,
+    "categoria": "Cuidados Automotivos",
+    "slug": "cuidados-automotivos",
+    "servico": [
+      { "id": 701, "nome": "Mecânicos móveis", "slug": "mecanicos-moveis" },
+      {
+        "id": 702,
+        "nome": "Lavagem e higienização de veículos",
+        "slug": "lavagem-veiculos"
+      },
+      {
+        "id": 703,
+        "nome": "Funileiros e reparadores de pintura",
+        "slug": "funileiros-pintura"
+      }
     ]
   },
   {
-    "category": "Eventos & Serviços Especiais",
-    "services": [
-      "Fotógrafos",
-      "Cozinheiros e chefs domiciliares",
-      "Garçons e copeiras",
-      "Recreadores e animadores de festas"
+    "id": 8,
+    "categoria": "Eventos & Serviços Especiais",
+    "slug": "eventos-servico-especiais",
+    "servico": [
+      { "id": 801, "nome": "Fotógrafos", "slug": "fotografos" },
+      {
+        "id": 802,
+        "nome": "Cozinheiros e chefs domiciliares",
+        "slug": "cozinheiros-domiciliares"
+      },
+      { "id": 803, "nome": "Garçons e copeiras", "slug": "garcons-copeiras" },
+      {
+        "id": 804,
+        "nome": "Recreadores e animadores de festas",
+        "slug": "animadores-festas"
+      }
     ]
   },
   {
-    "category": "Serviços para Pets",
-    "services": ["Banho e tosa móvel", "Hospedagem para pets"]
+    "id": 9,
+    "categoria": "Serviços para Pets",
+    "slug": "servico-pets",
+    "servico": [
+      { "id": 901, "nome": "Banho e tosa móvel", "slug": "banho-tosa" },
+      { "id": 902, "nome": "Hospedagem para pets", "slug": "hospedagem-pets" }
+    ]
   },
   {
-    "category": "Entregas & Transporte",
-    "services": [
-      "Motoboys e entregadores",
-      "Fretes pequenos",
-      "Serviços de mudança"
+    "id": 10,
+    "categoria": "Entregas & Transporte",
+    "slug": "entregas-transporte",
+    "servico": [
+      {
+        "id": 1001,
+        "nome": "Motoboys e entregadores",
+        "slug": "motoboys-entregadores"
+      },
+      { "id": 1002, "nome": "Fretes pequenos", "slug": "fretes-pequenos" },
+      { "id": 1003, "nome": "Serviços de mudança", "slug": "mudancas" }
     ]
   }
 ]

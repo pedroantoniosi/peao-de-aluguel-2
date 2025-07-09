@@ -12,6 +12,22 @@
 
 <body id="dashboard" class="position-relative">
     <div class="dashboard-container">
+        <!-- <header class="header-container row justify-between align-center p-1">
+            <a href="/index.html" class="logo"><img src="/assets/img/logo.png" alt=""></a>
+            <nav class="navbar d-flex-lg">
+                <ul class="nav-list row gap-1 align-center">
+                    <li class="nav-link"><a href="#about">Sobre Nós</a></li>
+                    <li class="nav-link"><a href="#solutions">Soluções</a></li>
+                    <li class="nav-link"><a href="#services">Serviços</a></li>
+                    <li class="nav-link"><a href="#plans">Planos</a></li>
+                    <li class="nav-link"><a href="#testimonials">Testimoniais</a></li>
+                    <li class="nav-link"><a href="./pages/auth.html"><button class="btn-signup">Cadastro</button></a>
+                    </li>
+                    <li class="nav-link"><a href="./pages/auth.html"><button class="btn-login">Login</button></a></li>
+                </ul>
+            </nav>
+            <div class="toggle"><i class="bi bi-list"></i></div>
+        </header> -->
         <div class="container gap-1">
             <div class="user-filter d-flex-lg col">
                 <div class="card">
@@ -70,21 +86,9 @@
 
                     </div>
                 </div>
+
             </div>
             <div class="user-hero col gap-1">
-                <nav class="user-navbar">
-                    <ul class="nav-list gap-1 px-1">
-                        <li class="nav-item d-none-lg"><i class="bi bi-layout-split me-05"></i>
-                            <p>Exibir</p>
-                        </li>
-                        <li class="nav-item row"><i class="bi bi-arrow-down-up me-05"></i>
-                            <p>Ordenar</p>
-                        </li>
-                        <li class="nav-item d-none-lg"><i class="bi bi-funnel-fill me-05"></i>
-                            <p>Filtrar</p>
-                        </li>
-                    </ul>
-                </nav>
                 <div class="user-search row">
                     <div class="search-ico row align-center justify-center p-05"><i class="bi bi-search"></i></div>
                     <input class="search-bar w-100 p-05" type="text" id="search-bar"
@@ -97,6 +101,22 @@
                 </div>
             </div>
         </div>
+        <nav class="user-navbar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <i class="bi bi-layout-split me-05"></i>
+                    <p class="nav-text">Exibir</p>
+                </li>
+                <li class="nav-item">
+                    <i class="bi bi-arrow-down-up me-05"></i>
+                    <p class="nav-text">Ordenar</p>
+                </li>
+                <li class="nav-item">
+                    <i class="bi bi-funnel-fill me-05"></i>
+                    <p id="btn-filter" class="nav-text">Filtrar</p>
+                </li>
+            </ul>
+        </nav>
     </div>
 
 
