@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Peão de Aluguel | Conecte-se ao sucesso</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -19,73 +19,81 @@
         href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
 </head>
+<link rel="icon" href="/assets/img/logo.png" type="image/png">
 
-<body class="index">
+<body id="index" class="">
 
-    <!-- <header class="header-container row justify-between align-center p-1">
+    <header class="header-container row justify-between align-center">
         <a href="/index.html" class="logo"><img src="./assets/img/logo.png" alt=""></a>
-        <nav class="navbar d-flex-lg">
-            <ul class="nav-list row gap-1 align-center">
-                <li class="nav-link"><a href="#about">Sobre Nós</a></li>
-                <li class="nav-link"><a href="#solutions">Soluções</a></li>
+        <nav id="navbar" class="navbar">
+            <ul class="nav-list">
+                <div class="btn-close">
+                    <button id="btn-close-navbar" class="me-auto"><i class="bi bi-arrow-bar-left"></i></button>
+                    <p class="me-auto">Barra de Navegação</p>
+                </div>
+                <li class="nav-link"><a href="#features">Sobre Nós</a></li>
                 <li class="nav-link"><a href="#services">Serviços</a></li>
+                <li class="nav-link"><a href="#solutions">Soluções</a></li>
                 <li class="nav-link"><a href="#plans">Planos</a></li>
-                <li class="nav-link"><a href="#testimonials">Testimoniais</a></li>
-                <li class="nav-link"><a href="./pages/auth.html"><button class="btn-signup">Cadastro</button></a></li>
-                <li class="nav-link"><a href="./pages/auth.html"><button class="btn-login">Login</button></a></li>
+                <li class="nav-link"><a href="#creators">Seja um criador</a></li>
+                <div class="btn-list mt-auto">
+                    <li class=""><a href="./pages/auth-profissional.html"><button
+                                class="btn-signup">Cadastro</button></a>
+                    </li>
+                    <li class=""><a href="./pages/login.html"><button class="btn-login">Login</button></a></li>
+                </div>
             </ul>
+
         </nav>
-        <div class="toggle"><i class="bi bi-list"></i></div>
-    </header> -->
+        <div id="btn-toggle" class="toggle d-none-lg"><i class="bi bi-list"></i></div>
+    </header>
 
 
-    <div class="hero-container py-5 mb-4">
+    <main class="hero-container py-5 mb-4">
         <div class="container row-lg justify-between align-center gap-2">
             <div class="caption col gap-1">
                 <div class="title"><span>Conectando</span><br> Profissionais Qualificados a Quem Precisa</div>
                 <p class="text">Encontre rapidamente profissionais confiáveis e experientes para atender às suas
                     necessidades, de forma prática e segura.</p>
                 <div class="row gap-1 mt-1">
-                    <button class="btn-primary">Quero contratar</button>
-                    <button class="btn-secondary">Quero trabalhar</button>
+                    <a href="/pages/auth-client.html"><button class="btn-primary">Quero contratar</button></a>
+                    <a href="/pages/auth-profissional.html"><button class="btn-secondary">Quero trabalhar</button></a>
                 </div>
             </div>
             <div class="img-banner"><img src="./assets/img/banner.png" alt=""></div>
         </div>
-    </div>
+    </main>
 
-
-    <div class="features-container my-4">
+    <section id="features" class="features-container my-4">
         <h2 class="sub-title d-none-lg text-center">Por que escolher o Peão de Aluguel?</h2>
         <div class="row wrapper">
             <div class="card col gap-05">
                 <i class="bi bi-person-check"></i>
                 <h3 class="mt-1">Contato Direto</h3>
-                <p>A plataforma conecta clientes e profissionais para negociação e contratação direta, sem
+                <p class="text">A plataforma conecta clientes e profissionais para negociação e contratação direta, sem
                     intermediação.</p>
             </div>
             <div class="card col gap-05">
                 <i class="bi bi-clock-history"></i>
                 <h3 class="mt-1">Atendimento Rápido</h3>
-                <p>Encontre e contrate profissionais disponíveis de forma ágil, quando e onde precisar.</p>
+                <p class="text">Encontre e contrate profissionais disponíveis de forma ágil, quando e onde precisar.</p>
             </div>
             <div class="card col gap-05">
                 <i class="bi bi-shield-lock"></i>
                 <h3 class="mt-1">Segurança nas Contratações</h3>
-                <p>Plataforma segura para proteger seus dados e garantir pagamentos confiáveis.</p>
+                <p class="text">Plataforma segura para proteger seus dados e garantir pagamentos confiáveis.</p>
             </div>
             <div class="card col gap-05">
                 <i class="bi bi-star"></i>
                 <h3 class="mt-1">Avaliações Transparentes</h3>
-                <p>Veja avaliações reais de outros clientes para tomar decisões com mais segurança.</p>
+                <p class="text">Veja avaliações reais de outros clientes para tomar decisões com mais segurança.</p>
             </div>
         </div>
-    </div>
+    </section>
 
-
-    <section class="services-container mb-4">
+    <section id="services" class="services-container mb-4">
         <div class="container col gap-2">
-            <h2 class="sub-title text-center">Principais serviços pedidos</h2>
+            <h2 class="sub-title text-center">Principais serviços</h2>
             <div class="wrapper">
                 <div class="card">
                     <span class="card-ico"><i class="bi bi-lightning-fill"></i></span>
@@ -122,19 +130,16 @@
                     <h3 class="card-title">Fotógrafo</h3>
                 </div>
 
-                <div class="card">
+                <a href="/pages/auth-profissional.html" class="card">
                     <span class="card-ico"><i class="bi bi-three-dots"></i></span>
                     <h3 class="card-title">Ver Todos</h3>
-                </div>
+                </a>
 
             </div>
         </div>
     </section>
 
-
-
-
-    <section class="howitworks-container mb-4 p-1">
+    <section id="solutions" class="howitworks-container mb-4 p-1">
         <div class="howitworks-inner">
             <div class="container">
                 <div class="wrapper row-lg row-auto align-center gap-2">
@@ -152,27 +157,76 @@
 
                     </div>
                     <div class="grid-2 gap-1 gap-1" id="steps-container">
-                        <!-- Cards gerados via JavaScript -->
+                        <div class="card col gap-1">
+                            <span class="ico"> <i class="bi bi-person-plus-fill"></i></span>
+                            <h2 class="card-title">Crie seu perfil gratuitamente</h2>
+                        </div>
+                        <div class="card col gap-1">
+                            <span class="ico"><i class="bi bi-chat-dots-fill"></i></span>
+                            <h2 class="card-title">Entre em contato direto com os usuarios</h2>
+                        </div>
+                        <div class="card col gap-1">
+                            <span class="ico"><i class="bi bi-cash-coin"></i></span>
+                            <h2 class="card-title">Envie propostas e negocie por whatsapp</h2>
+                        </div>
+                        <div class="card col gap-1">
+                            <span class="ico"><i class="bi bi-star-fill"></i></span>
+                            <h2 class="card-title">Avalie o usuario para melhorar nossa experiência</h2>
+                        </div>
+
+
+
+                        <div class="card col gap-1">
+                            <h2 class="card-title">
+                                <span class="ico"><i class="bi bi-person-plus-fill"></i></span>
+                            </h2>
+                            <p class="card-title">Cadastre-se e mostre suas habilidades para começar a receber
+                                oportunidades.
+                            </p>
+                        </div>
+
+                        <div class="card col gap-1">
+                            <h2 class="card-title">
+                                <span class="ico"><i class="bi bi-bell-fill"></i></span>
+                            </h2>
+                            <p class="card-title">Seja notificado sempre que seu perfil for visitado
+                                publicado.</p>
+                        </div>
+
+                        <div class="card col gap-1">
+                            <h2 class="card-title">
+                                <span class="ico"><i class="bi bi-send-fill"></i></span>
+                            </h2>
+                            <p class="card-title">Entre em contato com o contratante, ajuste valores e combine os
+                                detalhes do
+                                serviço.</p>
+                        </div>
+
+                        <div class="card col gap-1">
+                            <h2 class="card-title">
+                                <span class="ico"><i class="bi bi-star-fill"></i></span>
+                            </h2>
+                            <p class="card-title">Entregue um bom trabalho, receba boas avaliações e conquiste mais
+                                clientes.
+                            </p>
+                        </div>
                     </div>
                 </div>
-
-
             </div>
         </div>
-
     </section>
 
-    <section class="plans-container">
+    <section id="plans" class="plans-container">
         <div class="container col">
 
             <div class="caption col">
-                <h2 class="sub-title text-center">Tenha destaque em nossa plataforma por menos de 1,00 real por dia
+                <h2 class="sub-title text-center">Tenha acesso gratuito a nossa plataforma gratis por um mês
                 </h2>
-                <p class="text text-center mb-2">Ofertas por tempo limitado</p>
+                <p class="text text-center mb-2">Oferta por tempo limitado</p>
             </div>
 
             <swiper-container id="plans-slider" class="mySwiper plans-slider" pagination="true"
-                pagination-clickable="true" space-between="30" slides-per-view="2">
+                pagination-clickable="true" space-between="30" slides-per-view="1">
                 <swiper-slide>
                     <div class="card-wrapper row ">
                         <div class="card">
@@ -228,14 +282,13 @@
         </div>
     </section>
 
-
-    <section class="creators-container mt-4">
-        <div class="container row">
-            <div class="caption p-2 col justify-center gap-2">
+    <section id="creators" class="creators-container mt-4">
+        <div class="container row-lg gap-2">
+            <div class="caption col justify-center gap-2">
                 <h2 class="title">Criadores, vamos crescer juntos?</h2>
                 <p class="text">Seja parceiro na divulgação da nossa plataforma e ganhe benefícios
                     exclusivos promovendo oportunidades reais para quem precisa de serviços!</p>
-                <button class="btn-rounded">Seja Parceiro</button>
+                <button class="btn-rounded mt-2">Seja Parceiro</button>
             </div>
 
             <div><img src="./assets/img/creator.png" alt=""></div>
@@ -293,7 +346,9 @@
         </div>
     </footer>
 
-    <script src="./app.js"></script>
+    <script src="/assets/js/index/informationSelector.js"></script>
+    <script src="/assets/js/index/slider.js"></script>
+    <script src="/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 
 </body>

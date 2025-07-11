@@ -36,15 +36,18 @@ picture {
   display: flex;
 
   &>* {
+    display: flex;
     flex: 1;
   }
 }
 
 .flex-1 {
+  display: flex;
   flex: 1;
 }
 
 .flex-wrap {
+  display: flex;
   flex-wrap: wrap;
 }
 

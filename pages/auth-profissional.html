@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peão de Aluguel | Cadastro de Profissionais</title>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="icon" href="/assets/img/logo.png" type="image/png">
+</head>
+
+<body id="auth-register">
+
+    <header class="header-container row justify-between align-center">
+        <a href="/index.html" class="logo"><img src="/assets/img/logo.png" alt=""></a>
+        <nav id="navbar" class="navbar">
+            <ul class="nav-list">
+                <div class="btn-close">
+                    <button id="btn-close-navbar" class="me-auto"><i class="bi bi-arrow-bar-left"></i></button>
+                    <p class="me-auto">Barra de Navegação</p>
+                </div>
+                </div>
+            </ul>
+
+        </nav>
+        <div id="btn-toggle" class="toggle d-none"><i class="bi bi-list"></i></div>
+    </header>
+
+    <div class="container">
+        <div class="card col gap-2">
+            <!-- <div class="row gap-05">
+                <span><i class="bi bi-arrow-bar-left"></i></span>
+                <p>Voltar a página inicial</p>
+            </div> -->
+            <div class="caption col gap-05">
+                <h2 class="title">Crie sua conta profissional</h2>
+                <p class="text">Será enviado (solicitado) uma confirmação do cadastro por e-mail.</p>
+            </div>
+
+            <div id="card-content" class="col gap-1">
+                <!-- 1° Tela - Cadastro de Login de Contratantes -->
+                <div class="form-item col">
+                    <label for="emailContratante">Email:</label>
+                    <input class="input-item" type="email" id="emailContratante" name="emailContratante" required
+                        placeholder="Seu Email">
+                </div>
+
+                <div class="form-item col" style="position: relative;">
+                    <label for="senhaContratante">Senha (mínimo 6 caracteres):</label>
+                    <div class="row">
+                        <input class="input-item w-100" type="password" id="senhaContratante" name="senhaContratante"
+                            minlength="6" required placeholder="Sua senha">
+                        <span class="ico-password"><i class="bi bi-eye"></i></span>
+                    </div>
+                </div>
+
+                <div class="form-item col" style="position: relative;">
+                    <label for="confirmarSenhaContratante">Confirmar Senha:</label>
+                    <div class="row">
+                        <input class="input-item w-100" type="password" id="confirmarSenhaContratante"
+                            name="confirmarSenhaContratante" required minlength="6" placeholder="Confirme sua senha">
+                        <span class="ico-password"><i class="bi bi-eye"></i></span>
+                    </div>
+                    <span id="erroSenhaCliente" style="color: red; display: none;">As senhas não
+                        coincidem.</span>
+                </div>
+
+                <!-- 2° Tela - Cadastro de Dados Pessoais de Contratantes -->
+                <div class="sep-personal-data col gap-1 py-1 row flew-wrap">
+                    <div class="row flex-wrap gap-2">
+                        <div class="form-item col flex-1">
+                            <label for="nomeContratante">Nome Completo:</label>
+                            <input class="input-item" type="text" id="nomeContratante" name="nomeContratante" required
+                                placeholder="Seu nome completo" style="min-width: 200px;">
+                        </div>
+
+                        <div class="form-item input-image  col">
+                            <!-- Label estilizada como botão -->
+                            <label class="upload-btn col" for="galeria-imagens">
+                                <i class="bi bi-image"></i>
+                                <span>1080 x 1080</span>
+                            </label>
+
+                            <input type="file" id="galeria-imagens" name="minhasImagens[]" accept="image/*" multiple>
+                        </div>
+                    </div>
+
+                    <div class="form-item col">
+                        <label for="telefoneContratante">Telefone:</label>
+                        <input class="input-item" type="text" id="telefoneContratante" name="telefoneContratante"
+                            required placeholder="Seu nome completo">
+                    </div>
+
+
+
+                    <div class="form-item col">
+                        <label for="cepProfissional">CEP:</label>
+                        <input class="input-item" type="text" id="cepProfissional" name="cepProfissional"
+                            placeholder="00000-000" maxlength="9" required>
+                    </div>
+
+                    <div class="grid-2  gap-1">
+                        <div class="form-item state-item col w-100">
+                            <label for="estadoContratante">Estado:</label>
+                            <select id="estadoContratante" name="estadoContratante" required>
+                                <option value="">Selecione o estado</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+                        <div class="form-item col  w-100">
+                            <label for="cidadeContratante">Cidade:</label>
+                            <input class="input-item" type="text" id="cidadeContratante" name="cidadeContratante"
+                                required placeholder="Ex: Rio de Janeiro">
+                        </div>
+                        <div class="form-item col  w-100">
+                            <label for="enderecoContratante">Endereço:</label>
+                            <input class="input-item" type="text" id="enderecoContratante" name="enderecoContratante"
+                                required placeholder="Ex: Rua Tadeu Kosciusko">
+                        </div>
+                        <div class="form-item col  w-100">
+                            <label for="numeroContratante">Número:</label>
+                            <input class="input-item" type="text" id="numeroContratante" name="numeroContratante"
+                                required placeholder="Ex: 155">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="form-item buttons row justify-center gap-1 mt-2">
+                <a href="/index.html" class="w-100" style="max-width: 160px;"><button type="button"
+                        class="btn btn-prev">Voltar</button></a>
+                <button type="button" class="btn btn-next">Finalizar Cadastro</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        document.getElementById('galeria-imagens').addEventListener('change', function () {
+            console.log('Evento change disparado.');
+            const maxFiles = 4;
+            console.log('Arquivos selecionados:', this.files.length); // Verifique quantos arquivos estão aqui
+            const fileListContainer = document.getElementById('file-names-list');
+            fileListContainer.innerHTML = '';
+
+            if (this.files.length > maxFiles) {
+                console.log('Limite excedido! Limpando seleção.'); // Verifique se esta mensagem aparece
+                alert(`Você pode selecionar no máximo ${maxFiles} imagens. Por favor, selecione novamente.`);
+                this.value = ''; // Limpa a seleção de arquivos
+                fileListContainer.innerHTML = '<li>Nenhuma imagem selecionada.</li>';
+                return;
+            }
+            // ... restante do seu código
+        });
+
+
+    </script>
+
+
+    <script src="/assets/js/auth/cep-fetcher.js"></script>
+    <script src="/assets/js/auth/validate-password.js"></script>
+    <script src="/app.js"></script>
+</body>
+
+</html>
