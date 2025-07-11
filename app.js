@@ -1,12 +1,17 @@
-document.getElementById('btn-toggle').onclick = () => {
-    const navbar = document.getElementById('navbar');
+const btnToggle = document.getElementById('btn-toggle');
+const btnClose = document.getElementById('btn-close-navbar');
+const navbar = document.getElementById('navbar');
+
+btnToggle.onclick = () => {
     navbar.classList.toggle('active');
+    document.body.style.overflow = navbar.classList.contains('active') ? 'hidden' : '';
 }
 
-document.getElementById('btn-close-navbar').onclick = () => {
-    const navbar = document.getElementById('navbar');
-    navbar.classList.remove('active')
+btnClose.onclick = () => {
+    navbar.classList.remove('active');
+    document.body.style.overflow = '';
 }
+
 
 window.addEventListener('scroll', () => {
     const header = document.querySelector('.header-container');

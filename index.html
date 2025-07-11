@@ -23,31 +23,61 @@
 
 <body id="index" class="">
 
+    <div class="notification-container">
+        <div class="notification-ico">
+            <i class="bi bi-bell-fill"></i>
+        </div>
+        <div class="notification-wrapper">
+            <h3 class="notification-title">Receber notificações?</h3>
+            <p class="notification-text">
+                Deseja permitir que este site envie notificações com novidades e atualizações?
+            </p>
+            <div class="btn-list">
+                <button class="btn-allow">Sim, quero</button>
+                <button class="btn-deny">Agora não</button>
+            </div>
+        </div>
+    </div>
+
     <header class="header-container row justify-between align-center">
         <a href="/index.html" class="logo"><img src="./assets/img/logo.png" alt=""></a>
         <nav id="navbar" class="navbar">
             <ul class="nav-list">
                 <div class="btn-close">
-                    <button id="btn-close-navbar" class="me-auto"><i class="bi bi-arrow-bar-left"></i></button>
+                    <button id="btn-close-navbar" class="btn-close-navbar me-auto">
+                        <i class="bi bi-arrow-left"></i>
+                    </button>
                     <p class="me-auto">Barra de Navegação</p>
                 </div>
-                <li class="nav-link"><a href="#features">Sobre Nós</a></li>
-                <li class="nav-link"><a href="#services">Serviços</a></li>
-                <li class="nav-link"><a href="#solutions">Soluções</a></li>
-                <li class="nav-link"><a href="#plans">Planos</a></li>
-                <li class="nav-link"><a href="#creators">Seja um criador</a></li>
-                <div class="btn-list mt-auto">
-                    <li class=""><a href="./pages/auth-profissional.html"><button
-                                class="btn-signup">Cadastro</button></a>
-                    </li>
-                    <li class=""><a href="./pages/login.html"><button class="btn-login">Login</button></a></li>
+                <a href="#features" class="list-item">
+                    <li class="nav-link">Sobre Nós</li>
+                </a>
+                <a href="#services" class="list-item">
+                    <li class="nav-link">Serviços</li>
+                </a>
+                <a href="#solutions" class="list-item">
+                    <li class="nav-link">Soluções</li>
+                </a>
+                <a href="#plans" class="list-item">
+                    <li class="nav-link">Planos</li>
+                </a>
+                <a href="#creators" class="list-item">
+                    <li class="nav-link">Seja um criador</li>
+                </a>
+
+                <div class="btn-list">
+                    <a href="./pages/auth-profissional.html">
+                        <div class="btn-signup">Cadastro</div>
+                    </a>
+                    <a href="./pages/login.html">
+                        <div class="btn-login">Login</div>
+                    </a>
                 </div>
             </ul>
 
         </nav>
         <div id="btn-toggle" class="toggle d-none-lg"><i class="bi bi-list"></i></div>
     </header>
-
 
     <main class="hero-container py-5 mb-4">
         <div class="container row-lg justify-between align-center gap-2">
@@ -142,7 +172,7 @@
     <section id="solutions" class="howitworks-container mb-4 p-1">
         <div class="howitworks-inner">
             <div class="container">
-                <div class="wrapper row-lg row-auto align-center gap-2">
+                <div class="wrapper row-md row-auto align-center gap-2">
                     <div class="caption col gap-2">
                         <h2 class="title">
                             Descubra como nossa plataforma funciona
@@ -156,59 +186,45 @@
                         </div>
 
                     </div>
-                    <div class="grid-2 gap-1 gap-1" id="steps-container">
+                    <div class="steps-container gap-1" id="steps-container">
+                        <!-- cards para profissionais -->
                         <div class="card col gap-1">
-                            <span class="ico"> <i class="bi bi-person-plus-fill"></i></span>
-                            <h2 class="card-title">Crie seu perfil gratuitamente</h2>
+                            <span class="ico"><i class="bi bi-person-plus-fill"></i></span>
+                            <h3 class="card-title">Cadastre-se e comece a receber
+                                oportunidades.
+                            </h3>
                         </div>
                         <div class="card col gap-1">
-                            <span class="ico"><i class="bi bi-chat-dots-fill"></i></span>
-                            <h2 class="card-title">Entre em contato direto com os usuarios</h2>
+                            <span class="ico"><i class="bi bi-bell-fill"></i></span>
+                            <h3 class="card-title">Seja notificado sempre que seu perfil for visitado.</h3>
                         </div>
                         <div class="card col gap-1">
-                            <span class="ico"><i class="bi bi-cash-coin"></i></span>
-                            <h2 class="card-title">Envie propostas e negocie por whatsapp</h2>
+                            <span class="ico"><i class="bi bi-send-fill"></i></span>
+                            <h3 class="card-title">Recebe contato direto, ajuste valores e combine os
+                                detalhes do serviço.</h3>
                         </div>
                         <div class="card col gap-1">
                             <span class="ico"><i class="bi bi-star-fill"></i></span>
-                            <h2 class="card-title">Avalie o usuario para melhorar nossa experiência</h2>
+                            <h3 class="card-title">Entregue um bom trabalho e receba boas avaliações.
+                            </h3>
                         </div>
 
-
-
+                        <!-- cards para contratantes -->
                         <div class="card col gap-1">
-                            <h2 class="card-title">
-                                <span class="ico"><i class="bi bi-person-plus-fill"></i></span>
-                            </h2>
-                            <p class="card-title">Cadastre-se e mostre suas habilidades para começar a receber
-                                oportunidades.
-                            </p>
+                            <span class="ico"> <i class="bi bi-person-plus-fill"></i></span>
+                            <h3 class="card-title">Crie seu perfil gratuitamente</h3>
                         </div>
-
                         <div class="card col gap-1">
-                            <h2 class="card-title">
-                                <span class="ico"><i class="bi bi-bell-fill"></i></span>
-                            </h2>
-                            <p class="card-title">Seja notificado sempre que seu perfil for visitado
-                                publicado.</p>
+                            <span class="ico"><i class="bi bi-chat-dots-fill"></i></span>
+                            <h3 class="card-title">Entre em contato direto com os usuarios</h3>
                         </div>
-
                         <div class="card col gap-1">
-                            <h2 class="card-title">
-                                <span class="ico"><i class="bi bi-send-fill"></i></span>
-                            </h2>
-                            <p class="card-title">Entre em contato com o contratante, ajuste valores e combine os
-                                detalhes do
-                                serviço.</p>
+                            <span class="ico"><i class="bi bi-cash-coin"></i></span>
+                            <h3 class="card-title">Envie propostas e negocie por whatsapp</h3>
                         </div>
-
                         <div class="card col gap-1">
-                            <h2 class="card-title">
-                                <span class="ico"><i class="bi bi-star-fill"></i></span>
-                            </h2>
-                            <p class="card-title">Entregue um bom trabalho, receba boas avaliações e conquiste mais
-                                clientes.
-                            </p>
+                            <span class="ico"><i class="bi bi-star-fill"></i></span>
+                            <h3 class="card-title">Avalie o usuario para melhorar nossa experiência</h3>
                         </div>
                     </div>
                 </div>
@@ -235,15 +251,13 @@
                                 <div class="card-misc">Mais Acessível</div>
                             </div>
                             <div class="caption">
-                                <div class="card-price mt-1">Gratuito<span>/mês</span></div>
+                                <div class="card-price mt-1">Gratuito<span> / no primeiro mês</span></div>
                             </div>
                             <ul class="list-group col gap-05 mt-4">
-                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Perfil Público
-                                </li>
-                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>1 anuncio por
-                                    perfil
-                                </li>
-                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Mensagens Básicas
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Perfil Público </li>
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>3 serviços por
+                                    profissional</li>
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Mensagens Diretas
                                 </li>
                             </ul>
                             <button class="btn-rounded m-auto">Comece Agora</button>
@@ -258,24 +272,19 @@
                                 <div class="card-misc">Mais Popular</div>
                             </div>
                             <div class="caption">
-                                <div class="card-price mt-1">R$ 25 <span>/mês</span></div>
+                                <div class="card-price mt-1">R$ 19,99 <span>/ por mês</span></div>
                             </div>
                             <ul class="list-group col gap-05 mt-4">
-                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Até 5 anuncios
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Serviços Ilimitados
                                 </li>
-                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Selo de Destaque
-                                </li>
+                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Selo de Destaque</li>
                                 <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Estatisticas de
-                                    Visualizações
-                                </li>
-                                <li class="list-item"><i class="bi bi-check-circle-fill me-05"></i>Mensagens Diretas
-                                </li>
+                                    Visualizações por email</li>
                             </ul>
                             <button class="btn-rounded m-auto">Comece Agora</button>
                         </div>
                     </div>
                 </swiper-slide>
-
             </swiper-container>
 
 
@@ -301,7 +310,7 @@
         <div class="container row justify-between gap-4 flex-wrap">
             <div class="col gap-1">
                 <h3 class="footer-title">Sobre a Plataforma</h3>
-                <p class="footer-text" style="max-width: 660px;">Conectamos profissionais e contratantes com facilidade
+                <p class="footer-text" style="max-width: 500px;">Conectamos profissionais e contratantes com facilidade
                     e segurança. Seu talento
                     merece visibilidade, e sua necessidade merece solução.</p>
 
@@ -346,6 +355,8 @@
         </div>
     </footer>
 
+
+    <script src="./assets/js/index/notifications.js"></script>
     <script src="/assets/js/index/informationSelector.js"></script>
     <script src="/assets/js/index/slider.js"></script>
     <script src="/app.js"></script>
