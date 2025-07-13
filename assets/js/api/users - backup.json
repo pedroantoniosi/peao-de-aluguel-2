@@ -1,0 +1,97 @@
+[
+  {
+    "id": 1,
+    "nome": "Pietro Costa",
+    "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Rua das Palmeiras",
+      "cidade": "Belo Horizonte",
+      "uf": "MG"
+    },
+    "servicos": [
+      {
+        "id": 1,
+        "nome": "Eletricistas",
+        "categoria": "Casa & Construção",
+        "preco": 22,
+        "tipoPreco": "Hora"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "nome": "Ana Souza",
+    "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Av. Paulista",
+      "cidade": "São Paulo",
+      "uf": "SP"
+    },
+    "servicos": [
+      {
+        "id": 2,
+        "nome": "Diaristas e Faxineiras",
+        "categoria": "Limpeza & Conservação",
+        "preco": 150,
+        "tipoPreco": "Diária"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "nome": "Carlos Lima",
+    "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Rua das Laranjeiras",
+      "cidade": "Salvador",
+      "uf": "BA"
+    },
+    "servicos": [
+      {
+        "id": 3,
+        "nome": "Técnicos em informática",
+        "categoria": "Suporte & Tecnologia",
+        "preco": 1200,
+        "tipoPreco": "Serviço"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "nome": "Juliana Alves",
+    "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Rua das Acácias",
+      "cidade": "Curitiba",
+      "uf": "PR"
+    },
+    "servicos": [
+      {
+        "id": 4,
+        "nome": "Aulas de idiomas",
+        "categoria": "Educação & Aulas Particulares",
+        "preco": 80,
+        "tipoPreco": "Aula"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "nome": "Roberto Silva",
+    "imagem": "/assets/img/profile.png",
+    "endereco": {
+      "rua": "Rua do Sol",
+      "cidade": "Porto Alegre",
+      "uf": "RS"
+    },
+    "servicos": [
+      {
+        "id": 5,
+        "nome": "Motoboys e entregadores",
+        "categoria": "Entregas & Transporte",
+        "preco": 12,
+        "tipoPreco": "Entrega"
+      }
+    ]
+  }
+]

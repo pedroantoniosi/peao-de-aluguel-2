@@ -841,7 +841,7 @@ a {
 
 /* ---------------------------------------------------------------- Dashboard do Sistema  ---------------------------------------------------------------- */
 #dashboard {
-    background-color: var(--dark);
+    background-color: #0F0F0F;
     color: var(--light);
 
     & .container {
