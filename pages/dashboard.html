@@ -20,7 +20,6 @@
     }
 
     .job-btn {
-        background-color: red;
         border-radius: 20rem;
         padding: .2rem .4rem;
         background-color: hsl(0, 0%, 20%);
@@ -35,23 +34,13 @@
 <body id="dashboard" class="position-relative">
     <div class="dashboard-container">
 
+        <div class="side-bar col  justify-between p-1  align-center">
+            <a href="" class="row">
+                <img src="/assets/img/logo.png" alt="" width="40px">
+            </a>
+            <button style="font-size: 2.5rem; color: var(--light);"><i class="bi bi-person-circle"></i></button>
+        </div>
 
-        <nav class="user-navbar">
-            <ul class="nav-list">
-                <li class="nav-item">
-                    <i class="bi bi-layout-split me-05"></i>
-                    <p class="nav-text">Inicio</p>
-                </li>
-                <li class="nav-item">
-                    <i class="bi bi-layout-split me-05"></i>
-                    <p class="nav-text">Exibir</p>
-                </li>
-                <li class="nav-item nav-filter">
-                    <i class="bi bi-funnel-fill me-05"></i>
-                    <p id="btn-filter" class="nav-text">Filtrar</p>
-                </li>
-            </ul>
-        </nav>
         <div class="container gap-1">
             <div class="user-filter d-flex-lg col">
                 <div class="user-filter-caption row align-center justify-center p-1 ">
@@ -65,7 +54,10 @@
                     </div>
                 </div>
                 <div class="card">
-                    <h2 class="filter-title">Localização</h2>
+                    <h2 class="filter-title  row gap-05">
+                        <i class="bi bi-map-fill"></i>
+                        <span>Localização</span>
+                    </h2>
                     <div class="col gap-1">
                         <select id="estadoProfissional" name="estadoProfissional" required>
                             <option value="">Selecione o estado</option>
@@ -104,15 +96,21 @@
 
 
                 <div class="card">
-                    <h2 class="filter-title">Faixa de Preço</h2>
+                    <h2 class="filter-title row gap-05">
+                        <i class="bi bi-currency-dollar"></i>
+                        <span>Faixa de Preço</span>
+                    </h2>
                     <div class="row gap-1">
                         <input type="text" id="precoMin" placeholder="Preço mínimo">
                         <input type="text" id="precoMax" placeholder="Preço máximo">
                     </div>
                 </div>
 
-                <div class="card job-card">
-                    <h2 class="filter-title">Profissiões</h2>
+                <div class="card job-card row gap-05">
+                    <h2 class="filter-title">
+                        <i class="bi bi-briefcase-fill"></i>
+                        <span>Profissiões</span>
+                    </h2>
                     <div id="job-list" class="col gap-2">
 
                     </div>
@@ -120,28 +118,46 @@
 
             </div>
             <div class="user-hero col gap-1">
-                <div class="row">
-                    <div class="user-number">
-
+                <div class="row gap-2">
+                    <div class="user-search row flex-1">
+                        <div class="search-ico row align-center justify-center p-05"><i class="bi bi-search"></i></div>
+                        <input class="search-bar w-100 p-05" type="text" id="search-bar"
+                            placeholder="Buscar por nome, profissão ou serviço ex: Ana Souza, eletricista, pintura...">
+                        <!-- <ul id="sugestoes" class="autocomplete-list">
+                        </ul> -->
                     </div>
-                    <div class="order-list">
-
-                    </div>
-                </div>
-                <div class="user-search row">
-                    <div class="search-ico row align-center justify-center p-05"><i class="bi bi-search"></i></div>
-                    <input class="search-bar w-100 p-05" type="text" id="search-bar"
-                        placeholder="Buscar por nome, profissão ou serviço ex: Ana Souza, eletricista, pintura...">
-                    <!-- <ul id="sugestoes" class="autocomplete-list">
-
-                    </ul> -->
+                    <nav class="user-navbar">
+                        <ul class="nav-list row gap-1">
+                            <li class="nav-item row-lg">
+                                <i class="bi bi-layout-split me-05"></i>
+                                <p class="nav-text">Exibir</p>
+                            </li>
+                            <li class="nav-item row-lg">
+                                <div class="row">
+                                    <i class="bi bi-sort-alpha-up me-05"></i>
+                                    <p class="nav-text">Ordenar</p>
+                                </div>
+                                <div class="col mt-05">
+                                    <select id="ordenarPreco" class="filter-item">
+                                        <option value="">Selecionar</option>
+                                        <option value="menor">Menor preço</option>
+                                        <option value="maior">Maior preço</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-filter  d-none-lg">
+                                <i class="bi bi-funnel-fill me-05"></i>
+                                <p id="btn-filter" class="nav-text">Filtrar</p>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
                 <div id="user-dashboard" class="user-dashboard">
                 </div>
             </div>
         </div>
     </div>
-
+    <div class="user-settings"></div>
 
     <script src="/assets/js/dashboard/filters.js"></script>
     <script src="/assets/js/dashboard/fetch-users.js"></script>

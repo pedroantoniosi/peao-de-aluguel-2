@@ -82,7 +82,8 @@
     <main class="hero-container py-5 mb-4">
         <div class="container row-lg justify-between align-center gap-2">
             <div class="caption col gap-1">
-                <div class="title"><span>Conectando</span><br> Profissionais Qualificados a Quem Precisa</div>
+                <div class="title" style="max-width: 560px;"><span>Conectando</span><br> Profissionais Qualificados a
+                    Quem Precisa</div>
                 <p class="text">Encontre rapidamente profissionais confiáveis e experientes para atender às suas
                     necessidades, de forma prática e segura.</p>
                 <div class="row gap-1 mt-1">
@@ -99,24 +100,28 @@
         <div class="row wrapper">
             <div class="card col gap-05">
                 <i class="bi bi-person-check"></i>
-                <h3 class="mt-1">Contato Direto</h3>
-                <p class="text">A plataforma conecta clientes e profissionais para negociação e contratação direta, sem
+                <h3 class="card-title mt-1">Contato Direto</h3>
+                <p class="card-text text">A plataforma conecta clientes e profissionais para negociação e contratação
+                    direta, sem
                     intermediação.</p>
             </div>
             <div class="card col gap-05">
                 <i class="bi bi-clock-history"></i>
-                <h3 class="mt-1">Atendimento Rápido</h3>
-                <p class="text">Encontre e contrate profissionais disponíveis de forma ágil, quando e onde precisar.</p>
+                <h3 class="card-title mt-1">Atendimento Rápido</h3>
+                <p class="card-text text">Encontre e contrate profissionais disponíveis de forma ágil, quando e onde
+                    precisar.</p>
             </div>
             <div class="card col gap-05">
                 <i class="bi bi-shield-lock"></i>
-                <h3 class="mt-1">Segurança nas Contratações</h3>
-                <p class="text">Plataforma segura para proteger seus dados e garantir pagamentos confiáveis.</p>
+                <h3 class="card-title  mt-1">Segurança nas Contratações</h3>
+                <p class="card-text text">Plataforma segura para proteger seus dados e garantir pagamentos confiáveis.
+                </p>
             </div>
             <div class="card col gap-05">
                 <i class="bi bi-star"></i>
-                <h3 class="mt-1">Avaliações Transparentes</h3>
-                <p class="text">Veja avaliações reais de outros clientes para tomar decisões com mais segurança.</p>
+                <h3 class="card-title mt-1">Avaliações Transparentes</h3>
+                <p class="card-text text">Veja avaliações reais de outros clientes para tomar decisões com mais
+                    segurança.</p>
             </div>
         </div>
     </section>
@@ -165,6 +170,14 @@
                     <h3 class="card-title">Ver Todos</h3>
                 </a>
 
+            </div>
+            <div class="input-item row align-center w-100">
+                <button><i class="bi bi-search"></i></button>
+                <input id="service-input" type="text" class="service-input" placeholder="O que você está procurando?">
+                <button><i class="bi bi-x-lg"></i></button>
+                <ul id="service-list" class="list-item">
+
+                </ul>
             </div>
         </div>
     </section>
@@ -292,8 +305,8 @@
     </section>
 
     <section id="creators" class="creators-container mt-4">
-        <div class="container row-lg gap-2">
-            <div class="caption col justify-center gap-2">
+        <div class="container row-lg justify-evenly gap-2">
+            <div class="caption col justify-center  gap-2">
                 <h2 class="title">Criadores, vamos crescer juntos?</h2>
                 <p class="text">Seja parceiro na divulgação da nossa plataforma e ganhe benefícios
                     exclusivos promovendo oportunidades reais para quem precisa de serviços!</p>
@@ -355,7 +368,7 @@
         </div>
     </footer>
 
-
+    <script src="/assets/js/index/fetch-services.js"></script>
     <script src="./assets/js/index/notifications.js"></script>
     <script src="/assets/js/index/informationSelector.js"></script>
     <script src="/assets/js/index/slider.js"></script>

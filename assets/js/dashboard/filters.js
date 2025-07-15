@@ -1,6 +1,3 @@
-// =====================
-// Acesse os dados da API (já carregados no fetch-users.js)
-// =====================
 if (typeof todosUsuarios === 'undefined') {
     var todosUsuarios = [];
 }
@@ -11,53 +8,54 @@ const precoMinInput = document.getElementById('precoMin');
 const precoMaxInput = document.getElementById('precoMax');
 const searchInput = document.getElementById('search-bar');
 const jobListContainer = document.getElementById('job-list');
+const ordenarSelect = document.getElementById('ordenarPreco');
 
-// Estado dos filtros
 const filtros = {
     estado: '',
     precoMin: '',
     precoMax: '',
     profissao: [],
-    busca: ''
+    busca: '',
+    ordenacao: ''
 };
 
-// ====================
-// EVENTOS DE FILTROS
-// ====================
+// ========== EVENTOS ==========
+if (estadoSelect) {
+    estadoSelect.addEventListener('change', e => {
+        filtros.estado = e.target.value;
+        updateActiveFilter('estado', e.target.options[e.target.selectedIndex].text);
+        aplicarFiltros();
+    });
+}
 
-// Estado
-estadoSelect.addEventListener('change', e => {
-    filtros.estado = e.target.value;
-    updateActiveFilter('estado', e.target.options[e.target.selectedIndex].text);
-    aplicarFiltros();
-});
+if (precoMinInput) {
+    precoMinInput.addEventListener('input', e => {
+        filtros.precoMin = e.target.value;
+        updateActiveFilter('precoMin', `Min: R$ ${e.target.value}`);
+        aplicarFiltros();
+    });
+}
 
-// Preço
-precoMinInput.addEventListener('input', e => {
-    filtros.precoMin = e.target.value;
-    updateActiveFilter('precoMin', `Min: R$ ${e.target.value}`);
-    aplicarFiltros();
-});
+if (precoMaxInput) {
+    precoMaxInput.addEventListener('input', e => {
+        filtros.precoMax = e.target.value;
+        updateActiveFilter('precoMax', `Max: R$ ${e.target.value}`);
+        aplicarFiltros();
+    });
+}
 
-precoMaxInput.addEventListener('input', e => {
-    filtros.precoMax = e.target.value;
-    updateActiveFilter('precoMax', `Max: R$ ${e.target.value}`);
-    aplicarFiltros();
-});
+if (searchInput) {
+    searchInput.addEventListener('input', e => {
+        filtros.busca = e.target.value.trim().toLowerCase();
+        updateActiveFilter('busca', `Busca: ${e.target.value}`);
+        aplicarFiltros();
+    });
+}
 
-// Busca
-searchInput.addEventListener('input', e => {
-    filtros.busca = e.target.value.trim().toLowerCase();
-    updateActiveFilter('busca', `Busca: ${e.target.value}`);
-    aplicarFiltros();
-});
-
-// Profissões (botões com data-job)
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('job-btn')) {
         const job = e.target.dataset.job;
 
-        // alternar seleção
         if (filtros.profissao.includes(job)) {
             filtros.profissao = filtros.profissao.filter(j => j !== job);
             removeActiveFilter('profissao-' + job);
@@ -72,22 +70,33 @@ document.addEventListener('click', function (e) {
     }
 });
 
-// ====================
-// FILTRAGEM DOS DADOS
-// ====================
+if (ordenarSelect) {
+    ordenarSelect.addEventListener('change', e => {
+        filtros.ordenacao = e.target.value;
+
+        let label = '';
+        if (filtros.ordenacao === 'maior') label = 'Maior preço';
+        else if (filtros.ordenacao === 'menor') label = 'Menor preço';
+
+        updateActiveFilter('ordenacao', `Ordenação: ${label}`);
+        aplicarFiltros();
+    });
+}
+
+// ========== APLICAR FILTROS ==========
 function aplicarFiltros() {
-    let resultado = [...todosUsuarios];
+    let resultado = [...todosUsuarios].filter(u => u.servicos && u.servicos.length > 0);
 
     if (filtros.estado) {
         resultado = resultado.filter(u => u.endereco.uf === filtros.estado);
     }
 
     if (filtros.precoMin) {
-        resultado = resultado.filter(u => parseFloat(u.servicos[0].preco) >= parseFloat(filtros.precoMin));
+        resultado = resultado.filter(u => u.servicos[0].preco >= filtros.precoMin);
     }
 
     if (filtros.precoMax) {
-        resultado = resultado.filter(u => parseFloat(u.servicos[0].preco) <= parseFloat(filtros.precoMax));
+        resultado = resultado.filter(u => u.servicos[0].preco <= filtros.precoMax);
     }
 
     if (filtros.profissao.length > 0) {
@@ -103,12 +112,22 @@ function aplicarFiltros() {
         );
     }
 
+    if (filtros.ordenacao === 'menor') {
+        resultado.sort((a, b) => a.servicos[0].preco - b.servicos[0].preco);
+    } else if (filtros.ordenacao === 'maior') {
+        resultado.sort((a, b) => b.servicos[0].preco - a.servicos[0].preco);
+    }
+
     renderizarUsuarios(resultado);
 }
 
-// ====================
-// UI: Ativos em #active-filters
-// ====================
+// ========== ATUALIZAR UI DE FILTROS ==========
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.innerText = text;
+    return div.innerHTML;
+}
+
 function updateActiveFilter(key, label) {
     const existing = activeFiltersContainer.querySelector(`[data-key="${key}"]`);
     if (existing) existing.remove();
@@ -117,7 +136,7 @@ function updateActiveFilter(key, label) {
         const el = document.createElement('div');
         el.className = 'filter-tag';
         el.dataset.key = key;
-        el.innerHTML = `${label} <button class="btn-remove" data-remove="${key}">x</button>`;
+        el.innerHTML = `${escapeHtml(label)} <button class="btn-remove" data-remove="${key}">x</button>`;
         activeFiltersContainer.appendChild(el);
     }
 }
@@ -127,9 +146,7 @@ function removeActiveFilter(key) {
     if (el) el.remove();
 }
 
-// ====================
-// EVENTO: Remover filtros ativos
-// ====================
+// ========== REMOVER FILTRO ==========
 activeFiltersContainer.addEventListener('click', function (e) {
     const key = e.target.dataset.remove;
     if (!key) return;
@@ -138,24 +155,23 @@ activeFiltersContainer.addEventListener('click', function (e) {
         const job = key.replace('profissao-', '');
         filtros.profissao = filtros.profissao.filter(j => j !== job);
 
-        // remover classe ativa do botão
         const btn = document.querySelector(`.job-btn[data-job="${job}"]`);
         if (btn) btn.classList.remove('active');
     } else {
         filtros[key] = '';
-        if (key === 'estado') estadoSelect.value = '';
-        if (key === 'precoMin') precoMinInput.value = '';
-        if (key === 'precoMax') precoMaxInput.value = '';
-        if (key === 'busca') searchInput.value = '';
+
+        if (key === 'estado' && estadoSelect) estadoSelect.value = '';
+        if (key === 'precoMin' && precoMinInput) precoMinInput.value = '';
+        if (key === 'precoMax' && precoMaxInput) precoMaxInput.value = '';
+        if (key === 'busca' && searchInput) searchInput.value = '';
+        if (key === 'ordenacao' && ordenarSelect) ordenarSelect.value = '';
     }
 
-    e.target.parentElement.remove();
+    removeActiveFilter(key);
     aplicarFiltros();
 });
 
-// ====================
-// CARREGAR CATEGORIAS E PROFISSÕES
-// ====================
+// ========== PROFISSÕES ==========
 async function carregarProfissoes() {
     try {
         const resposta = await fetch('https://raw.githubusercontent.com/pedroantoniosi/peao-de-aluguel-2/refs/heads/main/assets/js/api/jobs.json');
@@ -194,5 +210,5 @@ function renderizarProfissoes(categorias) {
     });
 }
 
-// Chama função ao carregar
+// ========== INICIALIZAR ==========
 carregarProfissoes();
