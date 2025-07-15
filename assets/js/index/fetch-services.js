@@ -1,105 +1,96 @@
-let categorias = []; // Para armazenar os dados carregados da API
+let categorias = []; // Dados carregados da API
 
-// Função para carregar os dados da API
+// Carrega dados da API
 async function carregarCategorias() {
     try {
-        const resposta = await fetch('https://raw.githubusercontent.com/pedroantoniosi/peao-de-aluguel-2/refs/heads/main/assets/js/api/jobs.json');
+        const resposta = await fetch(
+            'https://raw.githubusercontent.com/pedroantoniosi/peao-de-aluguel-2/refs/heads/main/assets/js/api/jobs.json'
+        );
         if (!resposta.ok) throw new Error(`Erro ao buscar dados: ${resposta.status}`);
-
-        categorias = await resposta.json(); // Salva os dados em uma variável global
+        categorias = await resposta.json();
     } catch (erro) {
         console.error('Erro ao carregar a API:', erro);
     }
 }
 
-// Função para buscar e filtrar os serviços
+// Busca por serviços com mais inteligência
 function buscarServicos(termo) {
     const termoLower = termo.toLowerCase();
-    const resultados = [];
 
-    categorias.forEach(categoria => {
-        categoria.servico.forEach(servico => {
-            if (servico.nome.toLowerCase().includes(termoLower)) {
-                resultados.push({
-                    categoria: categoria.categoria,
-                    nome: servico.nome
-                });
-            }
-        });
-    });
-
-    return resultados;
+    return categorias.flatMap(categoria =>
+        categoria.servico
+            .filter(servico =>
+                servico.nome.toLowerCase().startsWith(termoLower) ||
+                servico.nome.toLowerCase().includes(termoLower)
+            )
+            .map(servico => ({
+                categoria: categoria.categoria,
+                nome: servico.nome
+            }))
+    );
 }
 
-document.getElementById('service-input').addEventListener('input', (e) => {
-    const termo = e.target.value.trim();
-    const lista = document.getElementById('service-list');
-    const inputItem = e.target.closest('.input-item'); // pega o elemento pai com a classe .input-item
-
-    if (termo.length > 1) {
-        const resultados = buscarServicos(termo);
-        exibirServicos(resultados);
-        if (inputItem) {
-            inputItem.style.borderColor = '#0267FC'; // cor azul ativa
-        }
-    } else {
-        lista.innerHTML = '';
-        lista.style.display = 'none';
-        if (inputItem) {
-            inputItem.style.borderColor = ''; // remove estilo inline e usa o padrão do CSS
-        }
-    }
-});
-
-
-document.getElementById('service-input').addEventListener('input', (e) => {
-    const termo = e.target.value.trim();
-    const lista = document.getElementById('service-list');
-
-    if (termo.length > 1) {
-        const resultados = buscarServicos(termo);
-        exibirServicos(resultados);
-    } else {
-        lista.innerHTML = '';
-        lista.style.display = 'none'; // Oculta a lista se não tiver busca válida
-    }
-});
-
-
-// Função para exibir os resultados
+// Exibe os serviços filtrados
 function exibirServicos(servicos) {
     const lista = document.getElementById('service-list');
-    lista.innerHTML = ''; // Limpa os resultados anteriores
+    lista.innerHTML = '';
 
     if (servicos.length === 0) {
-        lista.style.display = 'none'; // Esconde se não houver resultados
+        lista.style.display = 'none';
         return;
     }
 
-    servicos.forEach(servico => {
+    for (const servico of servicos) {
         const item = document.createElement('li');
         item.className = 'service-item p-05';
         item.innerHTML = `
-      <h3 id="service-tag">${servico.categoria}</h3>
-      <p class="service-name">${servico.nome}</p>
-    `;
+            <h3 class="service-tag">${servico.categoria}</h3>
+            <p class="service-name">${servico.nome}</p>
+        `;
         lista.appendChild(item);
-    });
+    }
 
-    lista.style.display = 'block'; // Mostra se houver resultados
+    lista.style.display = 'block';
 }
 
+// Função debounce para evitar múltiplas execuções rápidas
+function debounce(func, delay = 300) {
+    let timeout;
+    return (...args) => {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), delay);
+    };
+}
 
-// Evento de input para buscar em tempo real
-document.getElementById('service-input').addEventListener('input', (e) => {
-    const termo = e.target.value.trim();
-    if (termo.length > 1) {
-        const resultados = buscarServicos(termo);
-        exibirServicos(resultados);
-    } else {
-        document.getElementById('service-list').innerHTML = '';
-    }
+// Lógica de input com estilo e busca
+const input = document.getElementById('service-input');
+const lista = document.getElementById('service-list');
+const inputItem = input.closest('.input-item');
+
+input.addEventListener(
+    'input',
+    debounce((e) => {
+        const termo = e.target.value.trim();
+
+        if (termo.length > 1) {
+            const resultados = buscarServicos(termo);
+            exibirServicos(resultados);
+            inputItem && (inputItem.style.borderColor = '#0267FC');
+        } else {
+            lista.innerHTML = '';
+            lista.style.display = 'none';
+            inputItem && (inputItem.style.borderColor = '');
+        }
+    }, 300)
+);
+
+// Botão para limpar o campo e esconder a lista
+document.getElementById('closeServiceList').addEventListener('click', () => {
+    input.value = '';
+    lista.innerHTML = '';
+    lista.style.display = 'none';
+    inputItem && (inputItem.style.borderColor = '');
 });
 
-// Inicializa
+// Inicia
 carregarCategorias();

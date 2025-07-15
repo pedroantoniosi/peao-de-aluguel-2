@@ -34,17 +34,17 @@
 <body id="dashboard" class="position-relative">
     <div class="dashboard-container">
 
-        <div class="side-bar col  justify-between p-1  align-center">
+        <div class="menu-bar justify-between align-center">
             <a href="" class="row">
-                <img src="/assets/img/logo.png" alt="" width="40px">
+                <img src="/assets/img/logo.png" alt="">
             </a>
-            <button style="font-size: 2.5rem; color: var(--light);"><i class="bi bi-person-circle"></i></button>
+            <button><i class="bi bi-person-circle"></i></button>
         </div>
 
         <div class="container gap-1">
-            <div class="user-filter d-flex-lg col">
+            <div id="user-filter" class="user-filter col">
                 <div class="user-filter-caption row align-center justify-center p-1 ">
-                    <button id="btn-close-filter" class="me-auto"><i class="bi bi-arrow-bar-left"></i></button>
+                    <button id="btn-close-filter" class="me-auto"><i class="bi bi-arrow-left"></i></button>
                     <p class="me-auto" style="font-weight: 500;">Filtrar</p>
                 </div>
                 <div class="card">
@@ -118,7 +118,7 @@
 
             </div>
             <div class="user-hero col gap-1">
-                <div class="row gap-2">
+                <div class="row-md gap-2">
                     <div class="user-search row flex-1">
                         <div class="search-ico row align-center justify-center p-05"><i class="bi bi-search"></i></div>
                         <input class="search-bar w-100 p-05" type="text" id="search-bar"
@@ -127,38 +127,45 @@
                         </ul> -->
                     </div>
                     <nav class="user-navbar">
-                        <ul class="nav-list row gap-1">
-                            <li class="nav-item row-lg">
+                        <ul class="nav-list row justify-center gap-05 align-center">
+                            <li id="resize-selector" class="nav-item row">
                                 <i class="bi bi-layout-split me-05"></i>
                                 <p class="nav-text">Exibir</p>
                             </li>
-                            <li class="nav-item row-lg">
-                                <div class="row">
+                            <li class="nav-item row align-center gap-05">
+                                <div id="order-selector" class="row p-05">
                                     <i class="bi bi-sort-alpha-up me-05"></i>
                                     <p class="nav-text">Ordenar</p>
                                 </div>
-                                <div class="col mt-05">
-                                    <select id="ordenarPreco" class="filter-item">
-                                        <option value="">Selecionar</option>
-                                        <option value="menor">Menor preço</option>
-                                        <option value="maior">Maior preço</option>
-                                    </select>
+                                <div id="select-list" class="select-list">
+                                    <div class="caption col">
+                                        <button value="menor" class="btn-order">Menor preço</button>
+                                        <button value="maior" class="btn-order">Maior preço</button>
+                                        <button id="btnCloseSelect" class="btn-close mt-auto ms-auto p-1"
+                                            style="color: #d9534f;">Cancelar</button>
+                                    </div>
+
                                 </div>
                             </li>
-                            <li class="nav-item nav-filter  d-none-lg">
-                                <i class="bi bi-funnel-fill me-05"></i>
-                                <p id="btn-filter" class="nav-text">Filtrar</p>
+                            <li class="nav-item row">
+                                <div id="filter-selector" class="d-none-lg">
+                                    <i class="bi bi-funnel-fill me-05"></i>
+                                    <p id="btn-filter" class="nav-text">Filtrar</p>
+                                </div>
                             </li>
                         </ul>
                     </nav>
                 </div>
                 <div id="user-dashboard" class="user-dashboard">
+
                 </div>
             </div>
         </div>
     </div>
     <div class="user-settings"></div>
 
+
+    <script src="/assets/js/dashboard/app.js"></script>
     <script src="/assets/js/dashboard/filters.js"></script>
     <script src="/assets/js/dashboard/fetch-users.js"></script>
     <script src=""></script>

@@ -475,6 +475,11 @@ a {
                 }
             }
 
+            & .btn-close {
+                position: absolute;
+                right: 0;
+            }
+
             & i {
                 padding: .5rem 1rem;
                 color: var(--light);
@@ -889,33 +894,45 @@ a {
 
 /* ---------------------------------------------------------------- Dashboard do Sistema  ---------------------------------------------------------------- */
 #dashboard {
-    background-color: #0F0F0F;
     color: var(--light);
+    background-color: var(--dark);
+
+    & .menu-bar {
+        padding: .5rem 1rem;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        position: fixed;
+        background-color: var(--secondary-color);
+        top: 0;
+        left: 0;
+        z-index: 9;
+        color: var(--light);
+
+        & button {
+            color: var(--light);
+            font-size: 1.5rem;
+        }
+
+        & img {
+            width: 25px;
+        }
+    }
 
     & .container {
-        padding: 1rem;
+        padding: 4rem 1rem 1rem 1rem;
+        background-color: var(--dark);
 
         & .user-filter {
             display: none;
-
-            &.active {
-                width: 100%;
-                left: 0;
-                top: 0;
-                position: absolute;
-                display: flex !important;
-                height: 100svh !important;
-                z-index: 2;
-                overflow: auto;
-                background-color: var(--dark);
-
-                & #btn-close-filter {
-                    display: flex;
-                    font-size: 1.2rem;
-                    background-color: transparent;
-                    color: var(--light);
-                }
-            }
+            width: 100%;
+            position: absolute;
+            left: 0;
+            top: 50px;
+            z-index: 99;
+            background-color: var(--dark);
+            max-height: 100svh;
+            overflow: auto;
 
             & #btn-close-filter {
                 display: flex;
@@ -924,6 +941,12 @@ a {
                 color: var(--light);
             }
 
+            & #btn-close-filter {
+                display: flex;
+                font-size: 1.2rem;
+                background-color: transparent;
+                color: var(--light);
+            }
 
             & .card {
                 padding: 1rem;
@@ -1040,6 +1063,44 @@ a {
 
             }
 
+            & .user-navbar {
+                & .nav-list {
+                    & .select-list {
+                        display: none;
+                        justify-content: center;
+                        align-items: center;
+                        position: absolute;
+                        width: 100%;
+                        height: 100svh;
+                        background-color: var(--dark);
+                        z-index: 99;
+                        background-color: hsla(0, 0%, 0%, 0.5);
+                        top: 0;
+                        left: 0;
+
+                        & .caption {
+                            width: calc(100% - 2rem);
+                            height: 300px;
+                            background-color: var(--secondary-color);
+
+                            & .btn-order {
+                                color: var(--light);
+                            }
+
+                        }
+
+                        & .btn-order {
+                            display: flex;
+                            padding: 1rem;
+                        }
+                    }
+
+                    & #filter-selector {
+                        display: flex;
+                    }
+                }
+            }
+
             & .user-dashboard {
                 display: grid;
                 grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -1052,6 +1113,42 @@ a {
                     overflow: hidden;
                     box-shadow: rgba(255, 255, 255, 0.3) 0px 1px 1px 0px, rgba(255, 255, 255, 0.15) 0px 1px 2px 1px;
 
+                    &.active {
+                        flex: 1;
+                        flex-direction: row;
+
+                        &>* {
+                            width: 100%;
+                        }
+
+                        & .card-img {
+                            height: 100%;
+
+                            & img {
+                                height: 100%;
+                                object-fit: cover;
+                                aspect-ratio: 1/1;
+                            }
+                        }
+
+                        & .card-caption {
+
+                            & .user-price {
+                                font-size: 1rem;
+
+                                & span {
+                                    font-weight: 400;
+                                    font-size: .8rem;
+                                }
+                            }
+
+                            & .btn-conect {
+                                margin-top: 0rem;
+                                font-size: .7rem;
+                                font-weight: 600;
+                            }
+                        }
+                    }
 
                     & .card-img {
                         & img {
@@ -1527,9 +1624,11 @@ a {
     }
 
     #dashboard {
-        & .side-bar {
+        & .menu-bar {
+            flex-direction: column;
             position: fixed;
             background-color: hsl(0, 0%, 4%);
+            width: fit-content;
             height: 100svh;
             top: 0;
             left: 0;
@@ -1599,6 +1698,12 @@ a {
                     align-items: center;
                     background-color: var(--dark);
                     box-shadow: none;
+
+                    & .nav-list {
+                        & #filter-selector {
+                            display: none;
+                        }
+                    }
                 }
 
                 & .user-search {
@@ -1607,7 +1712,6 @@ a {
 
                 & .user-dashboard {
                     display: grid;
-
                     grid-template-columns: repeat(4, 1fr);
 
                     & .card {
@@ -1625,11 +1729,6 @@ a {
     }
 
     #index {
-        & .creators-container {
-            & .container {
-                padding: 2rem 0;
-            }
-        }
 
         & .features-container {
             & .wrapper {
@@ -1648,6 +1747,10 @@ a {
         }
 
         & .creators-container {
+            & .container {
+                padding: 2rem 0;
+            }
+
             & img {
                 max-width: 700px;
                 border-radius: 1rem;
