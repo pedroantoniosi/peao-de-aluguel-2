@@ -1703,6 +1703,17 @@ a {
                         & #filter-selector {
                             display: none;
                         }
+
+                        & .select-list {
+                            background-color: red;
+                            height: fit-content;
+                            top: 100%;
+
+                            & .caption {
+                                width: 100%;
+                                height: auto;
+                            }
+                        }
                     }
                 }
 

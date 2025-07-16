@@ -1,5 +1,9 @@
-// Torna a variável global para que filters.js tenha acesso
+// Variáveis globais
 window.todosUsuarios = [];
+window.usuariosFiltrados = []; // Mantém os usuários filtrados
+window.offsetFiltro = 0;       // Offset para scroll filtrado
+window.limite = 30;
+let carregando = false;
 
 // Carrega dados da API
 carregarUsuarios();
@@ -10,29 +14,42 @@ async function carregarUsuarios() {
         if (!resposta.ok) {
             throw new Error(`Erro na requisição: ${resposta.status} ${resposta.statusText}`);
         }
+
         const dados = await resposta.json();
         window.todosUsuarios = dados;
 
-        // Aplica os filtros automaticamente após carregar os dados
-        if (typeof aplicarFiltros === 'function') {
-            aplicarFiltros();
-        } else {
-            renderizarUsuarios(dados); // fallback
-        }
+        // Mostra os primeiros 30
+        window.usuariosFiltrados = dados;
+        window.offsetFiltro = 0;
+        document.getElementById('user-dashboard').innerHTML = '';
+        carregarUsuariosFiltrados();
+
     } catch (erro) {
         console.error('Erro ao carregar os usuários:', erro.message);
     }
 }
 
-// Função para renderizar os usuários no DOM
+// Carrega os próximos usuários filtrados
+function carregarUsuariosFiltrados() {
+    if (carregando) return;
+    carregando = true;
+
+    const container = document.getElementById('user-dashboard');
+    const usuarios = window.usuariosFiltrados.slice(window.offsetFiltro, window.offsetFiltro + window.limite);
+    window.offsetFiltro += window.limite;
+
+    renderizarUsuarios(usuarios);
+    carregando = false;
+}
+
+// Renderiza usuários no DOM
 function renderizarUsuarios(usuarios) {
     const container = document.getElementById('user-dashboard');
-    container.innerHTML = '';
 
     usuarios.forEach(usuario => {
         const { nome, imagem, endereco, servicos } = usuario;
         const { rua, cidade, uf } = endereco;
-        const servico = servicos[0]; // exibe o primeiro serviço
+        const servico = servicos[0];
 
         const card = document.createElement('div');
         card.classList.add('card');
@@ -60,5 +77,16 @@ function renderizarUsuarios(usuarios) {
     });
 }
 
-// Exporta a função globalmente caso filters.js precise chamá-la
+// Exporta globalmente
 window.renderizarUsuarios = renderizarUsuarios;
+window.carregarUsuariosFiltrados = carregarUsuariosFiltrados;
+
+// Scroll infinito para usuários filtrados
+window.addEventListener('scroll', () => {
+    const scrollFinal = window.innerHeight + window.scrollY >= document.body.offsetHeight - 100;
+    const aindaTemUsuarios = window.offsetFiltro < window.usuariosFiltrados.length;
+
+    if (scrollFinal && aindaTemUsuarios) {
+        carregarUsuariosFiltrados();
+    }
+});
