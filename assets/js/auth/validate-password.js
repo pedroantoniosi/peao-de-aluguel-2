@@ -1,72 +1,48 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     const senhaInput = document.getElementById('senhaCliente');
-//     const confirmarSenhaInput = document.getElementById('confirmarSenhaCliente');
-//     const erroSenha = document.getElementById('erroSenhaCliente');
-//     const btnNext = document.querySelector('.btn-next');
-
-//     function validarSenhas() {
-//         const senha = senhaInput.value;
-//         const confirmarSenha = confirmarSenhaInput.value;
-//         if (senha.length >= 6 && confirmarSenha.length >= 6 && senha !== confirmarSenha) {
-//             erroSenha.style.display = 'block';
-//             return false;
-//         } else {
-//             erroSenha.style.display = 'none';
-//             return true;
-//         }
-//     }
-
-//     confirmarSenhaInput.addEventListener('input', validarSenhas);
-//     senhaInput.addEventListener('input', validarSenhas);
-
-//     btnNext.addEventListener('click', function (e) {
-//         if (!validarSenhas()) {
-//             confirmarSenhaInput.focus();
-//             return;
-//         }
-//         // Aqui você pode avançar para o próximo passo do formulário
-//         // Exemplo: document.querySelector('.form-step.step-register').style.display = 'none';
-//         // Mostre o próximo passo do formulário conforme sua lógica
-//     });
-// });
-
-
-document.querySelectorAll('.ico-password').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const input = btn.parentElement.querySelector('input');
-        const icon = btn.querySelector('i');
-
-        if (input.type === 'password') {
-            input.type = 'text';
-            icon.classList.remove('bi-eye');
-            icon.classList.add('bi-eye-slash');
-        } else {
-            input.type = 'password';
-            icon.classList.remove('bi-eye-slash');
-            icon.classList.add('bi-eye');
+document.addEventListener('DOMContentLoaded', () => {
+    // Alternância da visibilidade da senha
+    function toggleSenhaVisibility(icoSenha) {
+        let inputSenha = icoSenha.previousElementSibling;
+        if (!inputSenha || inputSenha.tagName !== 'INPUT') {
+            inputSenha = icoSenha.parentElement.querySelector('input[type="password"], input[type="text"]');
         }
-    });
-});
+        if (!inputSenha) return;
 
-
-document.addEventListener('DOMContentLoaded', function () {
-    const senhaInput = document.getElementById('senhaContratante');
-    const confirmarSenhaInput = document.getElementById('confirmarSenhaContratante');
-    const erroSpan = document.getElementById('erroSenhaCliente');
-
-    function verificarSenhas() {
-        const senha = senhaInput.value;
-        const confirmarSenha = confirmarSenhaInput.value;
-
-        if (senha && confirmarSenha && senha !== confirmarSenha) {
-            erroSpan.style.display = 'block';
+        if (inputSenha.type === 'password') {
+            inputSenha.type = 'text';
+            icoSenha.querySelector('i').classList.replace('bi-eye', 'bi-eye-slash');
         } else {
-            erroSpan.style.display = 'none';
+            inputSenha.type = 'password';
+            icoSenha.querySelector('i').classList.replace('bi-eye-slash', 'bi-eye');
         }
     }
 
-    senhaInput.addEventListener('input', verificarSenhas);
-    confirmarSenhaInput.addEventListener('input', verificarSenhas);
-    senhaInput.addEventListener('blur', verificarSenhas);
-    confirmarSenhaInput.addEventListener('blur', verificarSenhas);
+    // Aplica evento para todos os ícones de olho de todos os formulários
+    const iconesOlho = document.querySelectorAll('.ico-password');
+    iconesOlho.forEach(icoSenha => {
+        icoSenha.style.cursor = 'pointer';
+        icoSenha.addEventListener('click', () => toggleSenhaVisibility(icoSenha));
+    });
+
+    // Função para validar se senhas iguais dentro de um form
+    window.validarSenhaIgual = function (form) {
+        // Busca inputs de senha e confirmação dentro do form dinamicamente
+        const senha = form.querySelector('input[type="password"][name*="senha"]:not([name*="confirmar"])');
+        const confirmarSenha = form.querySelector('input[type="password"][name*="confirmar"]');
+        // Busca o span de erro que comece com 'erroSenha' dentro do form
+        const erroSenha = form.querySelector('span[id^="erroSenha"]');
+
+        if (!senha || !confirmarSenha || !erroSenha) {
+            // Se algum elemento não existir, assume válido
+            return true;
+        }
+
+        if (senha.value !== confirmarSenha.value) {
+            erroSenha.style.display = 'inline';
+            confirmarSenha.focus();
+            return false;
+        } else {
+            erroSenha.style.display = 'none';
+            return true;
+        }
+    };
 });

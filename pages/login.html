@@ -8,8 +8,8 @@
     <!-- Import Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
     <!-- CSS STYLES -->
-    <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
     <!-- Sora Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,23 +54,19 @@
                 </div>
 
                 <!-- Formulário de Login -->
-                <form class="form-step step-register col gap-1" action="/login" method="POST">
+                <form class="form-step step-register col gap-1" action="../processa_login.php" method="POST">
                     <div class="form-item col">
-                        <label for="emailCliente">Email:</label>
-                        <input class="input-item" type="email" id="emailCliente" name="emailCliente" required
-                            placeholder="Seu Email" autocomplete="email">
+                        <label for="email">Email:</label>
+                        <input class="input-item" type="email" id="email" name="email" required placeholder="Seu Email"
+                            autocomplete="email">
                     </div>
 
                     <div class="form-item col" style="position: relative;">
-                        <label for="senhaContratante">Senha</label>
+                        <label for="senha">Senha</label>
                         <div class="row">
-                            <input class="input-item w-100" type="password" id="senhaContratante"
-                                name="senhaContratante" minlength="6" required placeholder="Sua senha">
+                            <input class="input-item w-100" type="password" id="senha" name="senha" minlength="6"
+                                required placeholder="Sua senha">
                         </div>
-                    </div>
-
-                    <div class="row justify-space-between align-center">
-                        <a href="/recuperar-senha.html" class="forget-password">Esqueceu a senha?</a>
                     </div>
 
                     <button type="submit" class="btn-primary align-self-center mt-1">Entrar</button>
@@ -79,10 +75,10 @@
                         Ainda não possui uma conta?
                         <a href="/pages/auth-profissional.html" class="link" style="color: #66a3ff;">Cadastre-se como
                             Profissional</a> ou
-                        <a href="/pages/auth-client.html" class="link" style="color: #66a3ff;">como
-                            Contratante</a>.
+                        <a href="/pages/auth-client.html" class="link" style="color: #66a3ff;">como Contratante</a>.
                     </p>
                 </form>
+
             </main>
 
 

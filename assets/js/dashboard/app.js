@@ -1,20 +1,15 @@
-
-
 if (window.matchMedia('(max-width: 768px)').matches) {
-
-
-
 
     const body = document.body;
 
     function disableBodyScroll() {
         body.style.overflow = 'hidden';
-        body.style.touchAction = 'none'; // útil para mobile
+        body.style.touchAction = 'none';
     }
 
     function enableBodyScroll() {
         body.style.overflow = '';
-        body.style.touchAction = ''; // restaura o padrão
+        body.style.touchAction = '';
     }
 
     document.getElementById('order-selector').onclick = () => {
@@ -45,18 +40,19 @@ if (window.matchMedia('(max-width: 768px)').matches) {
         enableBodyScroll();
     };
 
+    document.getElementById('sortPriceLowest').addEventListener('click', () => {
+        document.getElementById('select-list').style.display = "none";
+        enableBodyScroll(); // ✅ libera scroll após clique
+    });
 
-
-
-
-
-
-
-
+    document.getElementById('sortPricehigher').addEventListener('click', () => {
+        document.getElementById('select-list').style.display = "none";
+        enableBodyScroll(); // ✅ libera scroll após clique
+    });
 
     document.getElementById('resize-selector').onclick = () => {
         document.querySelectorAll("#user-dashboard .card").forEach((el) => {
-            el.classList.toggle('active')
-        })
-    }
+            el.classList.toggle('active');
+        });
+    };
 }
