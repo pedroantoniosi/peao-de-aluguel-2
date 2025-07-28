@@ -1,60 +1,86 @@
 <?php
-require_once 'conexao.php';
+require_once 'conexao.php'; // Deve criar $conn como mysqli
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $nome = $_POST["nomeProfissional"];
-    $email = $_POST["emailProfissional"];
-    $senha = $_POST["senhaProfissional"];
-    $telefone = $_POST["telefoneProfissional"];
-    $cep = $_POST["cepProfissional"];
-    $estado = $_POST["estadoProfissional"];
-    $cidade = $_POST["cidadeProfissional"];
-    $endereco = $_POST["enderecoProfissional"];
-    $numero = $_POST["numeroProfissional"];
-
-    // Verifica e trata imagem
-    $imagemUrl = null;
-    if (isset($_FILES["minhasImagens"]) && $_FILES["minhasImagens"]["error"][0] == 0) {
-        $pastaDestino = "../assets/img/uploads/";
-        if (!file_exists($pastaDestino)) {
-            mkdir($pastaDestino, 0777, true);
-        }
-
-        $nomeArquivo = uniqid() . "_" . basename($_FILES["minhasImagens"]["name"][0]);
-        $caminhoCompleto = $pastaDestino . $nomeArquivo;
-
-        if (move_uploaded_file($_FILES["minhasImagens"]["tmp_name"][0], $caminhoCompleto)) {
-            $imagemUrl = "assets/img/uploads/" . $nomeArquivo; // Caminho para salvar no banco
-        }
-    }
-
-    // Hash da senha
-    $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-    $sql = "INSERT INTO profissionais 
-        (nome, email, senha_hash, telefone, cep, estado, cidade, endereco, numero, imagem_url, criado_em)
-        VALUES 
-        (:nome, :email, :senha_hash, :telefone, :cep, :estado, :cidade, :endereco, :numero, :imagem_url, NOW())";
-
-    try {
-        $stmt = $conn->prepare($sql);
-        $stmt->execute([
-            ":nome" => $nome,
-            ":email" => $email,
-            ":senha_hash" => $senhaHash,
-            ":telefone" => $telefone,
-            ":cep" => $cep,
-            ":estado" => $estado,
-            ":cidade" => $cidade,
-            ":endereco" => $endereco,
-            ":numero" => $numero,
-            ":imagem_url" => $imagemUrl
-        ]);
-
-        header("Location: ../sucesso.html");
-        exit;
-    } catch (PDOException $e) {
-        echo "Erro ao cadastrar profissional: " . $e->getMessage();
-    }
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    die("Método inválido.");
 }
-?>
+
+// --- 1. Coleta e sanitiza os dados ---
+$email      = trim($_POST['emailProfissional'] ?? '');
+$senha      = trim($_POST['senhaProfissional'] ?? '');
+$confSenha  = trim($_POST['confirmarSenhaProfissional'] ?? '');
+$nome       = trim($_POST['nomeProfissional'] ?? '');
+$dataNasc   = trim($_POST['dataNascimentoProfissional'] ?? '');
+$telefone   = trim($_POST['telefoneProfissional'] ?? '');
+$estado     = trim($_POST['estadoProfissional'] ?? '');
+$cidade     = trim($_POST['cidadeProfissional'] ?? '');
+$endereco   = trim($_POST['enderecoProfissional'] ?? '');
+$numero     = trim($_POST['numeroEnderecoProfissional'] ?? '');
+$servico    = trim($_POST['servico'] ?? '');
+$valor      = trim($_POST['valorServico'] ?? '');
+$tipoPrec   = trim($_POST['tipoPrecificacao'] ?? '');
+$sobre      = trim($_POST['sobre'] ?? '');
+
+// --- 2. Validações básicas ---
+if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    die("Email inválido.");
+}
+
+if ($senha !== $confSenha) {
+    die("As senhas não coincidem.");
+}
+
+if (strlen($senha) < 6) {
+    die("A senha deve ter pelo menos 6 caracteres.");
+}
+
+$tiposValidos = ['Hora', 'Diaria', 'Semanal', 'Mensal', 'Preço Fixo'];
+if (!in_array($tipoPrec, $tiposValidos, true)) {
+    die("Tipo de precificação inválido.");
+}
+
+// --- 3. Verifica se o email já existe ---
+$stmt = $conn->prepare("SELECT id FROM profissionais WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->store_result();
+if ($stmt->num_rows > 0) {
+    die("Este email já está cadastrado.");
+}
+$stmt->close();
+
+// --- 4. Insere o profissional ---
+$senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+$stmt = $conn->prepare("
+    INSERT INTO profissionais
+    (nome, data_nascimento, email, senha_hash, telefone, estado, cidade, endereco, numero)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+");
+$stmt->bind_param("sssssssss", $nome, $dataNasc, $email, $senhaHash, $telefone, $estado, $cidade, $endereco, $numero);
+
+if (!$stmt->execute()) {
+    die("Erro ao cadastrar profissional: " . $stmt->error);
+}
+
+$profissional_id = $stmt->insert_id;
+$stmt->close();
+
+// --- 5. Insere o serviço ---
+$valorDecimal = preg_replace('/[^\d,]/', '', $valor);
+$valorDecimal = str_replace(',', '.', $valorDecimal);
+
+$stmt = $conn->prepare("
+    INSERT INTO servicos_profissional
+    (profissional_id, nome, preco, descricao, tipo_precificacao)
+    VALUES (?, ?, ?, ?, ?)
+");
+$stmt->bind_param("isdss", $profissional_id, $servico, $valorDecimal, $sobre, $tipoPrec);
+
+if (!$stmt->execute()) {
+    die("Erro ao cadastrar serviço: " . $stmt->error);
+}
+
+$stmt->close();
+$conn->close();
+
+echo "Cadastro realizado com sucesso!";

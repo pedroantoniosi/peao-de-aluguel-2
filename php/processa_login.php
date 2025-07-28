@@ -1,63 +1,53 @@
 <?php
 session_start();
-require 'conexao.php';
+require_once 'conexao.php'; // arquivo que conecta ao banco
 
-if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-    die('Método inválido');
+// Função para redirecionar com mensagem de erro
+function redirectWithError($msg) {
+  header("Location: /peao-de-aluguel/php/dashboard.php");
+exit;
+
 }
 
-$email = trim($_POST['email'] ?? '');
-$senha = $_POST['senha'] ?? '';
+// Verifica se veio POST e os dados
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = filter_input(INPUT_POST, 'email', FILTER_VALIDATE_EMAIL);
+    $senha = $_POST['usuarioSenha'] ?? '';
 
-if (empty($email) || empty($senha)) {
-    die('Preencha todos os campos.');
-}
-
-// Função para buscar usuário em profissionais ou contratantes
-function buscarUsuario($conn, $email) {
-    // Buscar em profissionais
-    $stmt = $conn->prepare("SELECT id, nome, email, senha_hash, 'profissional' AS tipo FROM profissionais WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $resultado = $stmt->get_result();
-    if ($resultado->num_rows === 1) {
-        return $resultado->fetch_assoc();
+    if (!$email || empty($senha)) {
+        redirectWithError('Por favor, preencha email e senha corretamente.');
     }
-    $stmt->close();
 
-    // Buscar em contratantes
-    $stmt = $conn->prepare("SELECT id, nome, email, senha_hash, 'contratante' AS tipo FROM contratantes WHERE email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $resultado = $stmt->get_result();
-    if ($resultado->num_rows === 1) {
-        return $resultado->fetch_assoc();
+    // Busca usuário pelo email
+    $sql = "SELECT id, nome, email, senha_hash FROM profissionais WHERE email = ? LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    if (!$stmt) {
+        redirectWithError('Erro interno do servidor.');
     }
-    $stmt->close();
+    $stmt->bind_param('s', $email);
+    $stmt->execute();
+    $res = $stmt->get_result();
 
-    return null; // Não achou usuário
-}
+    if ($res->num_rows === 0) {
+        redirectWithError('Email ou senha incorretos.');
+    }
 
-$usuario = buscarUsuario($conn, $email);
+    $usuario = $res->fetch_assoc();
 
-if (!$usuario) {
-    die('Usuário não encontrado.');
-}
+    // Verifica a senha
+    if (!password_verify($senha, $usuario['senha_hash'])) {
+        redirectWithError('Email ou senha incorretos.');
+    }
 
-if (password_verify($senha, $usuario['senha_hash'])) {
-    // Login OK, criar sessão
+    // Autenticação OK - Cria sessão
     $_SESSION['usuario_id'] = $usuario['id'];
     $_SESSION['usuario_nome'] = $usuario['nome'];
     $_SESSION['usuario_email'] = $usuario['email'];
-    $_SESSION['usuario_tipo'] = $usuario['tipo'];
+    $_SESSION['logado'] = true;
 
-    echo "Login realizado com sucesso! Seja bem-vindo, " . htmlspecialchars($usuario['nome']) . ".";
-    // Aqui você pode redirecionar para área restrita:
-    // header("Location: dashboard.php");
-    // exit();
+    // Redireciona para dashboard.php
+    header("Location: ../pages/dashboard.php");
+    exit();
 } else {
-    die('Senha incorreta.');
+    redirectWithError('Requisição inválida.');
 }
-
-$conn->close();
-?>

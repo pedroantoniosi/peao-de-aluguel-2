@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peão de Aluguel | Login</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="icon" href="../assets/img/logo.png" type="image/png">
+</head>
+
+<body>
+    <div class="auth-login">
+
+        <main class="login-container">
+            <div class="card col gap-2">
+                <!-- Cabeçalho da Página -->
+                <div class="caption col gap-05">
+                    <a href="../index.html" class="btn-back mb-2 align-self-end" aria-label="Fechar login">
+                        <i class="bi bi-x-lg"></i>
+                    </a>
+                    <h2 class="title">Bem-vindo de volta!</h2>
+                    <p class="text">Faça login para acessar sua conta e conectar-se com profissionais ou
+                        contratantes.
+                    </p>
+                </div>
+                <form action="../php/processa_login.php" method="POST">
+                    <div class="col gap-1">
+                        <div class="form-item col">
+                            <label for="email">Email:</label>
+                            <input class="input-item" type="email" id="email" name="email" required
+                                placeholder="Seu Email" autocomplete="email">
+                        </div>
+
+                        <div class="form-item col">
+                            <label for="usuarioSenha">Senha:</label>
+                            <div class="position-relative">
+                                <input class="input-item" type="password" id="usuarioSenha" name="usuarioSenha"
+                                    minlength="6" required placeholder="Sua senha" />
+                                <span class="ico-password"><i class="bi bi-eye"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="row justify-center py-1">
+                            <button type="submit" class="btn-primary align-self-center">Entrar</button>
+                        </div>
+
+                        <div class="text-sm col">
+
+                            <span>Ainda não possui uma conta? Cadastre-se<a href="/pages/auth-profissional.html"
+                                    class="link" style="color: #66a3ff;">
+                                    como Profissional</a></span>
+                            <span>ou <a href="/pages/auth-client.html" class="link" style="color: #66a3ff;">como
+                                    Contratante</a></span>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/auth/validate-password.js"></script>
+</body>
+
+</html>

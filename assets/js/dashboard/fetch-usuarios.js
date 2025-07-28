@@ -38,7 +38,7 @@ function renderizarUsuarios(usuarios) {
                 <div class="user-price">
                     R$ ${servico.preco} <span class="ms-05 mt-auto">${servico.tipo_precificacao || ''}</span>
                 </div>
-                <a class="btn-conect row justify-center" href="https://wa.me/${telefone ? telefone.replace(/\D/g, '') : ''}" target="_blank">
+                <a class="btn-conect text-center" href="https://wa.me/${telefone ? telefone.replace(/\D/g, '') : ''}" target="_blank">
                     <i class="bi bi-whatsapp me-05"></i>Quero contratar
                 </a>
             </div>
@@ -69,6 +69,3 @@ fetch('/peao-de-aluguel/php/api_profissionais.php')
     })
     .catch(err => console.error('Erro ao carregar profissionais:', err));
 
-
-
-console.log('testando')

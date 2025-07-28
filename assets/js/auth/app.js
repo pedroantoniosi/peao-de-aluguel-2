@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         btnNext.textContent = 'Próxima Etapa';
                         btnNext.type = 'button';
-                        btnNext.onclick = () => proximaEtapa();
+                        btnNext.onclick = () => avancarEtapa();
                     }
                 }
 
@@ -38,8 +38,27 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        function proximaEtapa() {
-            // Validação de campos obrigatórios na etapa atual
+        function validarSenhasIguais() {
+            // Seleciona os inputs de senha e confirmação na etapa 0
+            const etapa = etapas[0];
+            const senha = etapa.querySelector('input[name="senhaProfissional"]');
+            const confirmarSenha = etapa.querySelector('input[name="confirmarSenhaProfissional"]');
+            const erroSenha = document.getElementById('erroSenhaProfissional');
+
+            if (!senha || !confirmarSenha || !erroSenha) return true; // se algo não existir, permite seguir
+
+            if (senha.value !== confirmarSenha.value) {
+                erroSenha.style.display = 'inline';
+                confirmarSenha.focus();
+                return false;
+            } else {
+                erroSenha.style.display = 'none';
+                return true;
+            }
+        }
+
+        function avancarEtapa() {
+            // Validação básica: campos obrigatórios preenchidos
             const inputsObrigatorios = etapas[etapaAtual].querySelectorAll('[required]');
             for (const input of inputsObrigatorios) {
                 if (!input.value.trim()) {
@@ -49,9 +68,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // Validação especial de senha na etapa 0
-            if (etapaAtual === 0 && !window.validarSenhaIgual(formulario)) {
-                return; // não avançar se as senhas não baterem
+            // Na etapa 0, validar se as senhas batem
+            if (etapaAtual === 0 && !validarSenhasIguais()) {
+                return; // não avança se senhas diferentes
             }
 
             if (etapaAtual < etapas.length - 1) {
@@ -68,55 +87,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         mostrarEtapa(etapaAtual);
-        window.configurarAlternanciaSenha(formulario);
-    });
-});
-
-const idadeMinima = 18;
-
-function validarIdade(inputId, erroId) {
-    const input = document.getElementById(inputId);
-    const erro = document.getElementById(erroId);
-    if (!input) return true;
-
-    const valor = input.value;
-    if (!valor) {
-        erro.style.display = 'none';
-        return true;
-    }
-
-    const hoje = new Date();
-    const nascimento = new Date(valor);
-    let idade = hoje.getFullYear() - nascimento.getFullYear();
-    const m = hoje.getMonth() - nascimento.getMonth();
-    if (m < 0 || (m === 0 && hoje.getDate() < nascimento.getDate())) {
-        idade--;
-    }
-
-    if (idade < idadeMinima) {
-        erro.style.display = 'inline';
-        input.focus();
-        return false;
-    } else {
-        erro.style.display = 'none';
-        return true;
-    }
-}
-
-// Atualiza o atributo max dos inputs de data para impedir datas futuras
-document.querySelectorAll('input[type="date"]').forEach(input => {
-    input.max = new Date().toISOString().split('T')[0];
-});
-
-// Adiciona validação ao avançar de etapa
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('form').forEach(formulario => {
-        formulario.addEventListener('submit', function (e) {
-            const validoContratante = validarIdade('dataNascimentoContratante', 'erroIdadeContratante');
-            const validoProfissional = validarIdade('dataNascimentoProfissional', 'erroIdadeProfissional');
-            if (!validoContratante || !validoProfissional) {
-                e.preventDefault();
-            }
-        });
     });
 });
